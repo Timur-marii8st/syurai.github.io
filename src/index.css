@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  overscroll-behavior-x: none; /* Запрещает сдвиг страницы влево/вправо */
+  overflow-x: hidden; /* Скрывает горизонтальную прокрутку */
+}

@@ -94,7 +94,7 @@ const ResearchPage = () => {
               ← Back to list
             </button>
             <a 
-            href="https://drive.google.com/file/d/1G_nKi13ZN9iZ3janaObJarEwT9NE5G0y/view"
+            href="https://drive.google.com/file/d/1m3oH60JBD1fJl4Tnapcf92625YBOFykW/view"
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors">
