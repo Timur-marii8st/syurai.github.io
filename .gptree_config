@@ -1,0 +1,27 @@
+# GPTree Local Config
+version: 2
+
+# Whether to use .gitignore
+useGitIgnore: true
+# File types to include (e.g., .py,.js)
+includeFileTypes: *
+# File types to exclude when includeFileTypes is '*'
+excludeFileTypes: 
+# Output file name
+outputFile: gptree_output.txt
+# Whether to output the file locally or relative to the project directory
+outputFileLocally: true
+# Whether to copy the output to the clipboard
+copyToClipboard: false
+# Whether to use safe mode (prevent overly large files from being combined)
+safeMode: true
+# Whether to store the files chosen in the config file (--save, -s)
+storeFilesChosen: true
+# Whether to include line numbers in the output (--line-numbers, -n)
+lineNumbers: false
+# Whether to show ignored files in the directory tree
+showIgnoredInTree: false
+# Whether to show only default ignored files in the directory tree while still respecting gitignore
+showDefaultIgnoredInTree: false
+# Previously selected files (when using the -s or --save flag previously)
+previousFiles: src\team\TimurProfile.tsx,src\Team.tsx,.github\workflows\deploy.yml,preview.png,src\Stack.tsx,index.html,src\Research.tsx,src\team\ArjunProfile.tsx,tsconfig.app.json,src\products\MotiviPage.tsx,src\.gptree_config,public\_redirects,postcss.config.js,eslint.config.js,src\App.tsx,vite.config.ts,package.json,src\assets\motivi_logo.webp,src\Agents.tsx,src\index.css,tsconfig.node.json,src\assets\motivi_chat.webp,src\App.css,public\syu.svg,src\assets\react.svg,.gptree_config,tailwind.config.js,src\assets\timur-s.webp,src\articles\PsychProfilingPaper.tsx,tsconfig.json,src\main.tsx,README.md,package-lock.json
