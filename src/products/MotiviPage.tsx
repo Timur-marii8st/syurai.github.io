@@ -3,7 +3,7 @@ import {
   Brain, Calendar, Activity, Mic, Shield, Zap, ArrowLeft, Star
 } from 'lucide-react';
 import MotiviChat from '../assets/motivi_chat.webp';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // --- Animation Helper: Fade In on Scroll ---
 const FadeInSection = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => {

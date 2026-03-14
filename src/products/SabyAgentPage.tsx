@@ -12,7 +12,7 @@ import {
   Lock,
   Search,
 } from 'lucide-react';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // --- Animation Helper ---
 const FadeInSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {

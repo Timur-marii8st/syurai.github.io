@@ -192,7 +192,7 @@ export const en = {
     ctaDesc: 'Saby-Agent is deployed on-premise for enterprise clients working with Saby (СБИС) EDO. Reach out to discuss deployment for your organization.',
     ctaButton: 'Contact Us',
   },
-} as const;
+};
 
 export const ru: Translations = {
   nav: {
