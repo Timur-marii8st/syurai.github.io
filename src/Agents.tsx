@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useLanguage } from './contexts/LanguageContext';
 // Убрали импорт next/image
 // Импортируем картинку (убедись, что путь правильный относительно этого файла!)
 import heroBg from './assets/motivi_logo.webp'; 
@@ -10,6 +11,7 @@ interface AgentsPageProps {
 }
 
 const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateToSabyAgent }) => {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-20 px-4 sm:px-6 animate-in fade-in duration-700">
       <div className="max-w-7xl mx-auto">
@@ -17,14 +19,13 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
         {/* Header */}
         <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
           <div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">AGENTS</h2>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">{t.agents.title}</h2>
             <p className="text-xl text-gray-400 max-w-xl font-light">
-              Autonomous systems designed to solve complex tasks. 
-              From personal productivity to deep research.
+              {t.agents.subtitle}
             </p>
           </div>
           <div className="text-right hidden md:block">
-            <div className="text-xs text-gray-500 uppercase tracking-widest mb-1">Active Agents</div>
+            <div className="text-xs text-gray-500 uppercase tracking-widest mb-1">{t.agents.activeAgents}</div>
             <div className="text-3xl font-mono">02</div>
           </div>
         </div>
@@ -55,18 +56,18 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
             <div className="absolute bottom-0 left-0 p-8 w-full transform transition-all duration-300 translate-y-4 group-hover:translate-y-0">
                 {/* Tag */}
                 <div className="inline-flex items-center gap-1 bg-amber-500/20 border border-amber-500/30 text-amber-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 backdrop-blur-md">
-                    <Sparkles size={12} fill="currentColor" /> Productivity
+                    <Sparkles size={12} fill="currentColor" /> {t.agents.productivity}
                 </div>
 
                 <h3 className="text-4xl md:text-5xl font-bold text-white mb-2 leading-tight">Motivi_AI</h3>
                 
                 <p className="text-gray-300 text-lg mb-6 line-clamp-2 group-hover:line-clamp-none transition-all max-w-lg">
-                    A proactive Telegram planning assistant with cognitive memory and long-term goal tracking.
+                    {t.agents.motiViDesc}
                 </p>
 
                 {/* Hidden Details that fade in */}
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2 text-sm font-bold text-white">
-                    Explore Project <ArrowRight size={16} />
+                    {t.agents.exploreProject} <ArrowRight size={16} />
                 </div>
             </div>
           </div>
@@ -89,7 +90,7 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
             {/* Top row */}
             <div className="relative z-10 flex items-start justify-between">
               <div className="inline-flex items-center gap-1.5 bg-blue-500/15 border border-blue-500/25 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-                <Sparkles size={11} fill="currentColor" /> Enterprise
+                <Sparkles size={11} fill="currentColor" /> {t.agents.enterprise}
               </div>
               <div className="text-gray-700 text-4xl font-black opacity-30 group-hover:opacity-50 transition-opacity">02</div>
             </div>
@@ -112,10 +113,10 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
             <div className="relative z-10">
               <h3 className="text-3xl font-bold text-white mb-2 leading-tight">Saby-Agent</h3>
               <p className="text-gray-400 text-sm mb-5 line-clamp-2 group-hover:line-clamp-none transition-all">
-                Three autonomous agents that automate your full contract lifecycle inside Saby EDO.
+                {t.agents.sabyDesc}
               </p>
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center gap-2 text-sm font-bold text-blue-400">
-                Explore Project <ArrowRight size={15} />
+                {t.agents.exploreProject} <ArrowRight size={15} />
               </div>
             </div>
           </div>

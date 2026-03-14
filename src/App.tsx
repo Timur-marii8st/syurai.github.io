@@ -6,6 +6,7 @@ import {
   useLocation,
   useNavigate
 } from 'react-router-dom';
+import { useLanguage } from './contexts/LanguageContext';
 import {
   Microscope,
   Code2,
@@ -42,6 +43,7 @@ const ScrollToTop = () => {
 const GlobalBackButton = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   
   // Скрываем кнопку на этих путях
   const hiddenPaths = ['/', '/motivi', '/saby-agent', '/team/timur', '/team/arjun'];
@@ -53,8 +55,8 @@ const GlobalBackButton = () => {
       onClick={() => navigate('/')} 
       className="fixed top-6 left-6 z-50 px-5 py-2 bg-black/50 backdrop-blur-md border border-white/10 rounded-full text-sm font-bold text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all flex items-center gap-2 group animate-in fade-in duration-500"
     >
-      <ArrowRight className="rotate-180 group-hover:-translate-x-1 transition-transform" size={16}/> 
-      Back to Home
+      <ArrowRight className="rotate-180 group-hover:-translate-x-1 transition-transform" size={16}/>
+      {t.global.backToHome}
     </button>
   );
 };
@@ -76,6 +78,7 @@ const StackItem: React.FC<StackItemProps & { icon: React.ReactNode }> = ({ name,
 
 // --- MAIN HOME PAGE COMPONENT ---
 const Home = () => {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-[#0a0c10] text-[#EAE0D5] font-sans selection:bg-amber-500/30 overflow-x-hidden relative">
       {/* Background Effects */}
@@ -101,27 +104,27 @@ const Home = () => {
               {/* ДОБАВИЛ класс 'block' в начало className для каждой ссылки */}
               <li>
                 <Link to="/" className="block px-5 py-2 rounded-full bg-[#2a2620] text-amber-100 shadow-inner border border-amber-900/30 transition-all">
-                  Home
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
                 <Link to="/research" className="block px-5 py-2 rounded-full hover:bg-white/5 hover:text-white transition-all">
-                  Research
+                  {t.nav.research}
                 </Link>
               </li>
               <li>
                 <Link to="/agents" className="block px-5 py-2 rounded-full hover:bg-white/5 hover:text-white transition-all">
-                  Agents
+                  {t.nav.agents}
                 </Link>
               </li>
               <li>
                 <Link to="/stack" className="block px-5 py-2 rounded-full hover:bg-white/5 hover:text-white transition-all">
-                  Stack
+                  {t.nav.stack}
                 </Link>
               </li>
               <li>
                 <Link to="/team" className="block px-5 py-2 rounded-full hover:bg-white/5 hover:text-white transition-all">
-                  Team
+                  {t.nav.team}
                 </Link>
               </li>
             </ul>
@@ -138,7 +141,7 @@ const Home = () => {
             <span className="relative z-20 text-transparent bg-clip-text bg-gradient-to-b from-[#fffcf7] via-[#eaddcf] to-[#bfa68a] drop-shadow-[0_2px_15px_rgba(252,211,77,0.25)]">SYURAI</span>
           </h1>
           <p className="font-sans text-lg md:text-xl text-amber-100/70 tracking-wide max-w-2xl mx-auto font-light">
-            Innovative solutions and breakthrough research
+            {t.home.tagline}
           </p>
         </div>
 
@@ -152,14 +155,14 @@ const Home = () => {
                 <div className="w-14 h-14 mb-4 text-amber-200/80 group-hover:text-amber-100 transition-colors drop-shadow-[0_0_10px_rgba(251,191,36,0.3)]">
                   <Microscope strokeWidth={1.2} size={56} />
                 </div>
-                <h3 className="text-3xl font-bold text-white/90 mb-2 tracking-wide">Research</h3>
-                <p className="text-xs font-semibold uppercase tracking-wider text-amber-200/50 mb-4">Arxiv/PDF articles</p>
+                <h3 className="text-3xl font-bold text-white/90 mb-2 tracking-wide">{t.home.researchTitle}</h3>
+                <p className="text-xs font-semibold uppercase tracking-wider text-amber-200/50 mb-4">{t.home.researchSub}</p>
                 <p className="text-lg text-white/70 font-light leading-relaxed max-w-[90%]">
-                  Pushing the boundaries of knowledge
+                  {t.home.researchDesc}
                 </p>
               </div>
               <div className="flex items-center gap-2 text-sm font-bold text-amber-400/90 group-hover:text-amber-200 transition-colors">
-                <span className="border-b-2 border-amber-500/30 pb-1 group-hover:border-amber-300">Read Papers</span>
+                <span className="border-b-2 border-amber-500/30 pb-1 group-hover:border-amber-300">{t.home.researchCta}</span>
               </div>
             </div>
           </Link>
@@ -167,7 +170,7 @@ const Home = () => {
           {/* Agents */}
           <Link to="/agents" className="group relative h-[19rem] bg-gradient-to-br from-[#12141a]/60 to-[#0a0c10]/60 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-0 overflow-hidden transition-all duration-500 hover:border-amber-500/40 hover:shadow-[0_0_60px_-15px_rgba(217,119,6,0.25)] flex">
               <div className="p-8 flex flex-col justify-between w-[45%] z-10">
-                <h3 className="text-3xl font-bold text-white/90 tracking-wide">Agents</h3>
+                <h3 className="text-3xl font-bold text-white/90 tracking-wide">{t.home.agentsTitle}</h3>
                 <div className="w-24 h-24 relative opacity-50 group-hover:opacity-80 transition-opacity">
                   <Ghost strokeWidth={0.8} className="w-full h-full text-amber-100/40 animate-pulse duration-[4000ms]" />
                 </div>
@@ -185,14 +188,14 @@ const Home = () => {
                 <div className="flex justify-between items-center bg-white/5 -mx-5 px-5 py-1 my-1"><span className="text-blue-400 font-bold">1102</span><span className="text-green-400 font-bold">1024Mb</span><span className="text-amber-400 font-bold">4.5%</span></div>
                 <div className="flex justify-between items-center opacity-50"><span>3321</span><span>012Mb</span><span>0.1%</span></div>
                 <div className="mt-auto pt-2 text-amber-500 font-bold flex items-center text-xs">
-                  <span className="mr-2">●</span> Agent swarm active
+                  <span className="mr-2">●</span> {t.home.agentSwarmActive}
                 </div>
               </div>
           </Link>
 
           {/* Stack */}
           <Link to="/stack" className="group relative h-[19rem] bg-gradient-to-br from-[#12141a]/60 to-[#0a0c10]/60 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:border-amber-500/40 hover:shadow-[0_0_60px_-15px_rgba(217,119,6,0.25)] flex flex-col justify-between">
-            <h3 className="text-3xl font-bold text-white/90 tracking-wide">Stack</h3>
+            <h3 className="text-3xl font-bold text-white/90 tracking-wide">{t.home.stackTitle}</h3>
             <div className="flex items-end justify-between px-4 pb-2">
               <StackItem name="Python" colorClass="text-[#3776AB] drop-shadow-[0_0_8px_rgba(55,118,171,0.5)]" icon={<Code2 size={42} />} />
               <StackItem name="Polars" colorClass="text-[#CD792C] drop-shadow-[0_0_8px_rgba(205,121,44,0.5)]" icon={<Share2 size={42} />} />
@@ -200,14 +203,14 @@ const Home = () => {
               <StackItem name="Hugging Face" colorClass="" icon={<span className="text-4xl filter grayscale opacity-70 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all drop-shadow-[0_0_8px_rgba(255,217,0,0.5)]">🤗</span>} />
             </div>
             <div className="absolute top-8 right-8 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity font-bold text-xs uppercase tracking-widest flex items-center gap-1">
-              View All <ArrowRight size={12} />
+              {t.home.stackViewAll} <ArrowRight size={12} />
             </div>
           </Link>
 
           {/* Team */}
           <Link to="/team" className="group relative h-[19rem] bg-gradient-to-br from-[#12141a]/60 to-[#0a0c10]/60 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:border-amber-500/40 hover:shadow-[0_0_60px_-15px_rgba(217,119,6,0.25)] flex flex-col">
              <div className="flex justify-between items-start">
-                <h3 className="text-3xl font-bold text-white/90 mb-6 tracking-wide">Core Team</h3>
+                <h3 className="text-3xl font-bold text-white/90 mb-6 tracking-wide">{t.home.teamTitle}</h3>
                 <div className="bg-amber-500/10 p-2 rounded-lg text-amber-500 group-hover:text-white group-hover:bg-amber-500 transition-all">
                     <Users size={24} />
                 </div>
@@ -215,7 +218,7 @@ const Home = () => {
             
             <div className="flex-1 flex flex-col justify-end">
                 <p className="text-lg text-white/70 font-light leading-relaxed mb-4">
-                  Meet the architects behind the singularity.
+                  {t.home.teamDesc}
                 </p>
                 <div className="flex items-center gap-3">
                    {/* Avatar Pile Updated */}
@@ -238,13 +241,23 @@ const Home = () => {
                   </div>
                 </div>
                    <div className="text-xs font-bold text-amber-500 uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                       + Hiring
+                       {t.home.teamHiring}
                    </div>
                 </div>
             </div>
           </Link>
         </div>
       </div>
+    </div>
+  );
+};
+
+// --- 404 Component ---
+const NotFound = () => {
+  const { t } = useLanguage();
+  return (
+    <div className="p-10 text-white">
+      {t.global.notFound} <Link to="/" className="underline text-amber-500">{t.global.goHome}</Link>
     </div>
   );
 };
@@ -309,7 +322,7 @@ const App: React.FC = () => {
         <Route path="/team/arjun" element={<ArjunProfile onBack={() => navigate('/team')} />} />
 
         {/* 404 Redirect */}
-        <Route path="*" element={<div className="p-10 text-white">404 - Page Not Found. <Link to="/" className="underline text-amber-500">Go Home</Link></div>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

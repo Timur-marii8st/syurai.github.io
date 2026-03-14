@@ -1,90 +1,91 @@
 import { useEffect } from 'react';
-import { 
-  Code2, 
-  Share2, 
-  Flame, 
-  Box, 
-  Cpu, 
-  Layers, 
-  Zap, 
-  Binary, 
-  ExternalLink 
+import {
+  Code2,
+  Share2,
+  Flame,
+  Box,
+  Cpu,
+  Layers,
+  Zap,
+  Binary,
+  ExternalLink
 } from 'lucide-react';
-
-// --- Data ---
-
-const mainStack = [
-  {
-    name: "Python 3.11+",
-    desc: "The fundamental language for modern AI development. Used with strong typing and async capabilities.",
-    url: "https://www.python.org/",
-    icon: <Code2 size={40} />,
-    color: "text-[#3776AB]",
-    borderColor: "hover:border-[#3776AB]/50"
-  },
-  {
-    name: "PyTorch",
-    desc: "The primary framework for deep learning research and dynamic neural network architecture implementation.",
-    url: "https://pytorch.org/",
-    icon: <Flame size={40} />,
-    color: "text-[#EE4C2C]",
-    borderColor: "hover:border-[#EE4C2C]/50"
-  },
-  {
-    name: "Polars",
-    desc: "Blazingly fast DataFrames library implemented in Rust. Replaces Pandas for high-performance data processing.",
-    url: "https://pola.rs/",
-    icon: <Share2 size={40} />,
-    color: "text-[#CD792C]",
-    borderColor: "hover:border-[#CD792C]/50"
-  },
-  {
-    name: "Hugging Face",
-    desc: "The ecosystem for Transformers, Datasets, and Hub. Used for accessing SOTA open-source models.",
-    url: "https://huggingface.co/",
-    icon: <span className="text-4xl leading-none grayscale opacity-80 group-hover:grayscale-0 transition-all">🤗</span>,
-    color: "text-yellow-400",
-    borderColor: "hover:border-yellow-400/50"
-  }
-];
-
-const secondaryStack = [
-  {
-    name: "JAX",
-    desc: "High-performance numerical computing with composable transformations.",
-    url: "https://jax.readthedocs.io/",
-    icon: <Cpu size={20} />
-  },
-  {
-    name: "vLLM",
-    desc: "High-throughput and memory-efficient LLM serving engine.",
-    url: "https://docs.vllm.ai/",
-    icon: <Zap size={20} />
-  },
-  {
-    name: "BitsAndBytes",
-    desc: "Lightweight wrappers for CUDA custom functions, 8-bit optimizers, and quantization.",
-    url: "https://github.com/TimDettmers/bitsandbytes",
-    icon: <Binary size={20} />
-  },
-  {
-    name: "PEFT",
-    desc: "Parameter-Efficient Fine-Tuning methods (LoRA, Prefix Tuning).",
-    url: "https://github.com/huggingface/peft",
-    icon: <Layers size={20} />
-  },
-  {
-    name: "scikit-learn",
-    desc: "Simple and efficient tools for predictive data analysis and classic ML algorithms.",
-    url: "https://scikit-learn.org/",
-    icon: <Box size={20} />
-  }
-];
+import { useLanguage } from './contexts/LanguageContext';
 
 const StackPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const { t } = useLanguage();
+
+  const mainStack = [
+    {
+      name: "Python 3.11+",
+      desc: t.stack.pythonDesc,
+      url: "https://www.python.org/",
+      icon: <Code2 size={40} />,
+      color: "text-[#3776AB]",
+      borderColor: "hover:border-[#3776AB]/50"
+    },
+    {
+      name: "PyTorch",
+      desc: t.stack.pytorchDesc,
+      url: "https://pytorch.org/",
+      icon: <Flame size={40} />,
+      color: "text-[#EE4C2C]",
+      borderColor: "hover:border-[#EE4C2C]/50"
+    },
+    {
+      name: "Polars",
+      desc: t.stack.polarsDesc,
+      url: "https://pola.rs/",
+      icon: <Share2 size={40} />,
+      color: "text-[#CD792C]",
+      borderColor: "hover:border-[#CD792C]/50"
+    },
+    {
+      name: "Hugging Face",
+      desc: t.stack.hfDesc,
+      url: "https://huggingface.co/",
+      icon: <span className="text-4xl leading-none grayscale opacity-80 group-hover:grayscale-0 transition-all">🤗</span>,
+      color: "text-yellow-400",
+      borderColor: "hover:border-yellow-400/50"
+    }
+  ];
+
+  const secondaryStack = [
+    {
+      name: "JAX",
+      desc: t.stack.jaxDesc,
+      url: "https://jax.readthedocs.io/",
+      icon: <Cpu size={20} />
+    },
+    {
+      name: "vLLM",
+      desc: t.stack.vllmDesc,
+      url: "https://docs.vllm.ai/",
+      icon: <Zap size={20} />
+    },
+    {
+      name: "BitsAndBytes",
+      desc: t.stack.bnbDesc,
+      url: "https://github.com/TimDettmers/bitsandbytes",
+      icon: <Binary size={20} />
+    },
+    {
+      name: "PEFT",
+      desc: t.stack.peftDesc,
+      url: "https://github.com/huggingface/peft",
+      icon: <Layers size={20} />
+    },
+    {
+      name: "scikit-learn",
+      desc: t.stack.sklearnDesc,
+      url: "https://scikit-learn.org/",
+      icon: <Box size={20} />
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-20 px-4 sm:px-6 animate-in fade-in duration-700">
@@ -93,10 +94,10 @@ const StackPage = () => {
         {/* Header */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-            TECH <span className="text-amber-500">STACK</span>
+            {t.stack.title} <span className="text-amber-500">{t.stack.titleAccent}</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-            A curated selection of tools optimized for speed, scalability, and state-of-the-art AI research.
+            {t.stack.subtitle}
           </p>
         </div>
 
@@ -131,7 +132,7 @@ const StackPage = () => {
         <div className="border-t border-white/10 pt-16">
           <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
             <span className="w-2 h-8 bg-amber-600 rounded-full"/>
-            Also using / Specialized Tools
+            {t.stack.specializedTools}
           </h3>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

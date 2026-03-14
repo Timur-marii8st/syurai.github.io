@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Calendar, User, Download, ChevronRight } from 'lucide-react';
+import { useLanguage } from './contexts/LanguageContext';
 import PsychProfilingPaper from './articles/PsychProfilingPaper';
 import PsychoScopePaper from './articles/PsychoScopePaper';
 
@@ -37,6 +38,7 @@ const papers: PaperMetadata[] = [
 ];
 
 const ResearchPage = () => {
+  const { t } = useLanguage();
   const [activePaperId, setActivePaperId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const ResearchPage = () => {
             className="group flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors mb-8"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Research
+            {t.research.backToResearch}
           </button>
 
           <div className="border-b border-white/10 pb-8 mb-8">
@@ -87,7 +89,7 @@ const ResearchPage = () => {
 
           <div className="mt-16 pt-8 border-t border-white/10 flex justify-between items-center">
             <button onClick={() => setActivePaperId(null)} className="text-gray-500 hover:text-white transition-colors">
-              &larr; Back to list
+              {t.global.backToList}
             </button>
             {paper.pdfUrl && (
               <a
@@ -97,7 +99,7 @@ const ResearchPage = () => {
                 className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors"
               >
                 <Download size={16} />
-                Open Resource
+                {t.global.openResource}
               </a>
             )}
           </div>
@@ -110,9 +112,9 @@ const ResearchPage = () => {
     <div className="min-h-screen bg-black text-white pt-24 pb-20 px-4 sm:px-6 animate-in fade-in duration-500">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">Research</h2>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">{t.research.title}</h2>
           <p className="text-xl text-gray-400 max-w-2xl font-light">
-            Exploring the frontiers of agentic architectures, latent space psychology, and interpretable AI.
+            {t.research.subtitle}
           </p>
         </div>
 
@@ -144,7 +146,7 @@ const ResearchPage = () => {
                   <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-300 transition-colors leading-tight">{paper.title}</h3>
                   <p className="text-gray-400 leading-relaxed mb-6">{paper.abstract}</p>
                   <span className="inline-block text-sm font-semibold border-b border-transparent group-hover:border-white transition-all pb-0.5 text-blue-400 group-hover:text-white">
-                    Read Publication
+                    {t.global.readPublication}
                   </span>
                 </div>
               </div>

@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { ArrowLeft, Cpu, Terminal, Zap, Server, Code, Layers } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ArjunProfile = ({ onBack }: { onBack: () => void }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-black text-gray-200 font-sans selection:bg-amber-500/30 pt-24 pb-20 px-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -14,8 +17,8 @@ const ArjunProfile = ({ onBack }: { onBack: () => void }) => {
         onClick={onBack}
         className="fixed top-6 left-6 z-50 px-5 py-2 bg-black/50 backdrop-blur-md border border-white/10 rounded-full text-sm font-bold text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all flex items-center gap-2 group"
       >
-        <ArrowLeft className="group-hover:-translate-x-1 transition-transform" size={16}/> 
-        Back to Team
+        <ArrowLeft className="group-hover:-translate-x-1 transition-transform" size={16}/>
+        {t.arjun.backToTeam}
       </button>
 
       <div className="max-w-5xl mx-auto">

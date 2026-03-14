@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { ArrowLeft, Brain, Cpu, Globe, Github, Mail, Sparkles, Award } from 'lucide-react';
-import timurPhoto from '../assets/timur-s.webp'; 
+import timurPhoto from '../assets/timur-s.webp';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const TimurProfile = ({ onBack }: { onBack: () => void }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-black text-gray-200 font-sans selection:bg-amber-500/30 pt-24 pb-20 px-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -15,8 +18,8 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
         onClick={onBack}
         className="fixed top-6 left-6 z-50 px-5 py-2 bg-black/50 backdrop-blur-md border border-white/10 rounded-full text-sm font-bold text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all flex items-center gap-2 group"
       >
-        <ArrowLeft className="group-hover:-translate-x-1 transition-transform" size={16}/> 
-        Back to Team
+        <ArrowLeft className="group-hover:-translate-x-1 transition-transform" size={16}/>
+        {t.timur.backToTeam}
       </button>
 
       <div className="max-w-5xl mx-auto">
@@ -42,15 +45,15 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
               TIMUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700">SABITOV</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 font-light mb-6">
-              ML Engineer | Cognitive Architect | NLP Researcher
+              {t.timur.role}
             </p>
             
             <div className="flex flex-wrap gap-4 text-sm font-bold text-gray-500">
                 <span className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 hover:border-amber-500/50 hover:text-white transition-colors cursor-default">
-                    <Globe size={14} /> Kazan, HQ (Global R&D)
+                    <Globe size={14} /> {t.timur.location}
                 </span>
                 <a href="mailto:4gg528@gmail.com" className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 hover:border-amber-500/50 hover:text-white transition-colors">
-                    <Mail size={14} /> Contact Direct
+                    <Mail size={14} /> {t.global.contactDirect}
                 </a>
                 <a href="https://github.com/Timur-marii8st" target="_blank" className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 hover:border-amber-500/50 hover:text-white transition-colors">
                     <Github size={14} /> GitHub
