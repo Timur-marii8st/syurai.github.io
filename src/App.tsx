@@ -21,6 +21,7 @@ import ResearchPage from './Research';
 import AgentsPage from './Agents';
 import StackPage from './Stack';
 import MotiviPage from './products/MotiviPage';
+import SabyAgentPage from './products/SabyAgentPage';
 import TeamPage from './Team';
 import TimurProfile from './team/TimurProfile';
 import ArjunProfile from './team/ArjunProfile';
@@ -43,7 +44,7 @@ const GlobalBackButton = () => {
   const navigate = useNavigate();
   
   // Скрываем кнопку на этих путях
-  const hiddenPaths = ['/', '/motivi', '/team/timur', '/team/arjun'];
+  const hiddenPaths = ['/', '/motivi', '/saby-agent', '/team/timur', '/team/arjun'];
   
   if (hiddenPaths.includes(pathname)) return null;
 
@@ -270,13 +271,22 @@ const App: React.FC = () => {
         <Route path="/agents" element={
             <div className="min-h-screen bg-black font-sans">
                 {/* Передаем навигацию через функцию для совместимости со старым кодом Agents.tsx */}
-                <AgentsPage onNavigateToMotivi={() => navigate('/motivi')} />
+                <AgentsPage
+                  onNavigateToMotivi={() => navigate('/motivi')}
+                  onNavigateToSabyAgent={() => navigate('/saby-agent')}
+                />
             </div>
         } />
         
         <Route path="/motivi" element={
              <div className="min-h-screen bg-black font-sans">
                 <MotiviPage onBack={() => navigate('/agents')} />
+             </div>
+        } />
+
+        <Route path="/saby-agent" element={
+             <div className="min-h-screen bg-black font-sans">
+                <SabyAgentPage onBack={() => navigate('/agents')} />
              </div>
         } />
         

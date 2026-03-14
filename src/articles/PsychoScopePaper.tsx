@@ -154,17 +154,43 @@ const PsychoScopePaper: React.FC = () => {
   return (
     <article className="font-serif leading-relaxed text-gray-300 max-w-none">
 
+      {/* ── PDF / resource links ───────────────────────────────────────────────── */}
+      <div className="flex flex-wrap gap-3 mb-8">
+        <a
+          href="https://drive.google.com/file/d/14D-JwXHwQ7bmJrjE4TyB3NzVxxxO9QMG/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-300 hover:text-red-200 transition-colors rounded-lg px-4 py-2 text-sm font-sans font-medium"
+        >
+          <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+          </svg>
+          Download PDF
+        </a>
+        <a
+          href="https://github.com/Timur-marii8st/llm-psycho-scope"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors rounded-lg px-4 py-2 text-sm font-sans font-medium"
+        >
+          <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub Repository
+        </a>
+      </div>
+
       {/* ── Abstract ──────────────────────────────────────────────────────────── */}
       <div className="bg-white/5 border-l-4 border-blue-500 p-6 rounded-r-lg my-10 shadow-lg backdrop-blur-sm">
         <h3 className="text-white font-sans font-bold uppercase text-xs tracking-widest mb-3 opacity-70">Abstract</h3>
         <p className="italic text-gray-300 text-lg leading-8 mb-4">
-          When a language model processes text written by an anxious person, does it internally represent the
-          speaker's psychological state — even in the absence of explicit trait keywords? We formalize this as
-          the <em>Implicit Psychological Modeling</em> (IPM) hypothesis and provide the first systematic
-          empirical test across all Big Five personality dimensions and Narcissism.
+          When a language model processes text written by an anxious person, does it reflect the speaker's
+          internal psychological state — even in the absence of explicit keywords? We formalize this as
+          the <em>Implicit Psychological Modeling</em> (IPM) hypothesis and conduct the first systematic
+          empirical verification across all Big Five personality dimensions and Narcissism.
         </p>
         <p className="italic text-gray-300 leading-7 mb-4">
-          We construct a purpose-built contrastive dataset of 1,080 texts spanning six personality traits and
+          We have collected a purpose-built contrastive dataset of 1,080 texts covering six personality traits and
           three conditions: explicit trait description used for latent discovery (<strong className="text-gray-200 not-italic">A</strong>),
           implicit first-person speech conveying the trait through linguistic style alone (<strong className="text-gray-200 not-italic">B</strong>),
           and opposite-pole control matched on topic and vocabulary constraints (<strong className="text-gray-200 not-italic">C</strong>).
@@ -180,29 +206,32 @@ const PsychoScopePaper: React.FC = () => {
           confirms that identified latents are functionally involved in generation, not merely passive correlates.
         </p>
         <p className="italic text-gray-300 leading-7 mb-4">
-          These findings support the view that next-token prediction creates implicit pressure to represent
+          These results support the view that next-token prediction creates implicit pressure to represent
           speaker psychological states, yielding residual-stream representations that function as
           Theory-of-Mind-like speaker models — with direct implications for AI alignment, personalised
           generation, and psycholinguistics.
         </p>
-        <p className="text-sm text-blue-400 font-sans mt-4 not-italic">
-          <strong>Resources:</strong>{' '}
-          <a
-            href="https://github.com/Timur-marii8st/llm-psycho-scope"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-blue-300 transition-colors"
-          >
-            github.com/Timur-marii8st/llm-psycho-scope
-          </a>
-        </p>
+        <div className="flex flex-wrap gap-4 mt-4 not-italic text-sm font-sans">
+          <p className="text-blue-400">
+            <strong>Resources:</strong>{' '}
+            Dataset, code, and SAE activation artefacts are available at{' '}
+            <a
+              href="https://github.com/Timur-marii8st/llm-psycho-scope"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-blue-300 transition-colors"
+            >
+              github.com/Timur-marii8st/llm-psycho-scope
+            </a>
+          </p>
+        </div>
       </div>
 
       {/* ── 1. Introduction ────────────────────────────────────────────────────── */}
       <section className="mb-12">
         <H2>1. Introduction</H2>
         <p className="mb-4">
-          Consider the following excerpt of first-person speech drawn directly from our dataset, generated
+          Consider the following first-person speech excerpt, taken directly from our dataset and generated
           without any mention of anxiety or neuroticism:
         </p>
         <blockquote className="border-l-4 border-white/20 pl-6 py-2 my-6 italic text-gray-300 bg-white/[0.03] rounded-r-lg">
@@ -212,23 +241,23 @@ const PsychoScopePaper: React.FC = () => {
           aligned."
         </blockquote>
         <p className="mb-4">
-          No word in this passage explicitly names an emotional state. Yet a human reader immediately recognises
-          the psychological signature of anxiety: repetitive checking, catastrophising, inability to disengage
-          from perceived risk. We attribute a psychological state to the speaker not from keywords but from
-          the <em>structure</em> of their language — the syntax of worry.
+          Not a single word in this passage indicates an emotional state. Nevertheless, the human reader
+          immediately recognizes the psychological signature of anxiety: repeated checking, catastrophizing,
+          inability to disengage from perceived risk. We attribute a psychological state to the speaker not
+          by keywords, but by the <em>structure</em> of their language — the syntax of anxiety.
         </p>
         <p>
           The question we address in this paper is whether a large language model (LLM) does the same thing —
-          and whether we can observe it doing so.
+          and whether we can observe how it does it.
         </p>
 
         <H3 blue>1.1 The Implicit Psychological Modeling Hypothesis</H3>
         <p className="mb-4">
-          LLMs are trained on a single objective: predicting the next token in a sequence. Yet to predict well,
-          a model processing the passage above must implicitly answer: <em>what kind of person wrote this?</em>{' '}
-          If the speaker is anxious, the next token is more likely to be another catastrophising thought than a
-          calm observation. The speaker's psychological state is a latent variable that constrains the
-          distribution over future tokens.
+          LLMs are trained with a single objective: predicting the next token in a sequence. However, to
+          predict accurately, a model processing the above passage must implicitly answer the question:{' '}
+          <em>what kind of person wrote this?</em> If the speaker is anxious, then the next token is more
+          likely to be another catastrophizing thought rather than a calm observation. The speaker's
+          psychological state is a latent variable that constrains the distribution over future tokens.
         </p>
         <div className="bg-blue-950/30 border border-blue-500/30 rounded-lg p-5 my-6">
           <p className="text-gray-200 leading-relaxed">
@@ -238,56 +267,61 @@ const PsychoScopePaper: React.FC = () => {
           </p>
         </div>
         <p>
-          We call this the <em>Implicit Psychological Modeling</em> (IPM) hypothesis — a specific,
+          We call this the <em>Implicit Psychological Modeling</em> (IPM) hypothesis. It is a specific,
           mechanistically grounded instantiation of the broader idea that LLMs develop Theory-of-Mind-like
           capabilities as a functional byproduct of language modelling (Kosinski, 2023; Ullman, 2023).
         </p>
 
         <H3 blue>1.2 Why This Question Matters</H3>
-        <p className="mb-4">The IPM hypothesis sits at the intersection of three active research areas.</p>
+        <p className="mb-4">The IPM hypothesis sits at the intersection of three actively developing research areas.</p>
         <ul className="list-disc pl-6 space-y-4 marker:text-blue-500">
           <li>
             <strong className="text-white block mb-1">Mechanistic interpretability.</strong>
-            Sparse Autoencoders (SAEs) have proven remarkably effective at decomposing LLM residual-stream
-            activations into human-interpretable features (Cunningham et al., 2023; Templeton et al., 2024;
-            Lieberum et al., 2024). However, whether SAE latents encode <em>psychological</em> properties of
-            speakers — as opposed to properties of the text itself — remains largely unexplored.
+            Sparse Autoencoders (SAEs) have proven effective at decomposing LLM residual-stream activations
+            into human-interpretable features (Cunningham et al., 2023; Templeton et al., 2024; Lieberum et al.,
+            2024). However, the vast majority of SAE research focuses on factual, syntactic, or domain-specific
+            features. Whether SAE latents encode the <em>psychological</em> properties of speakers — as opposed
+            to properties of the text itself — remains largely unexplored.
           </li>
           <li>
             <strong className="text-white block mb-1">Psycholinguistics and computational personality.</strong>
-            A substantial literature links lexical and syntactic patterns to personality traits (Mairesse et al.,
-            2007; Schwartz et al., 2013). This work treats LLMs as classifiers applied to surface features; the
-            mechanistic question — <em>where</em> and <em>how</em> personality information about the author is
-            encoded inside the model — has not been addressed.
+            Extensive literature links lexical and syntactic patterns to personality traits (Mairesse et al.,
+            2007; Schwartz et al., 2013). However, this body of work treats LLMs as classifiers applied to
+            surface features, not as systems with internal representations. The mechanistic question —{' '}
+            <em>where</em> and <em>how</em> personality information about the author is encoded inside the
+            model — has not been addressed.
           </li>
           <li>
             <strong className="text-white block mb-1">AI alignment and safety.</strong>
-            If models implicitly profile the psychological states of users from text, models may generate
-            personalised responses based on inferred user traits without explicit design intent — and these
-            representations may be steerable in ways that could be exploited.
+            If models implicitly profile the psychological states of users from text, this has direct
+            consequences for alignment research: models may generate personalised responses based on inferred
+            user traits without this being an explicit design goal, and these representations may be manipulated
+            in ways that could be exploited. Understanding and auditing these representations is a prerequisite
+            for governing them.
           </li>
         </ul>
 
         <H3 blue>1.3 Our Approach</H3>
         <p className="mb-3">
-          We test the IPM hypothesis using SAE activation analysis and causal intervention on Gemma 3 4B (PT)
-          with Gemma Scope 2 SAEs. Methodology proceeds in three steps:
+          We test the IPM hypothesis using a combination of SAE activation analysis and causal intervention on
+          Gemma 3 4B (PT) with Gemma Scope 2 SAEs. Our methodology proceeds in three stages:
         </p>
         <ol className="list-decimal pl-6 space-y-3 marker:text-gray-500 marker:font-bold">
           <li>
-            <strong className="text-white">Step 1</strong> constructs a contrastive dataset with three
-            conditions: (A) explicit third-person trait descriptions for discovery; (B) implicit first-person
-            speech with all keywords banned — the primary test; (C) opposite-pole control.
+            <strong className="text-white">Stage 1</strong> constructs a contrastive dataset with three
+            conditions: (A) explicit third-person trait descriptions used for latent discovery; (B) implicit
+            first-person trait speech with all keywords banned — our primary test; and (C) opposite-pole
+            control matched on topic and format.
           </li>
           <li>
-            <strong className="text-white">Step 2</strong> identifies trait-specific latents via a contrastive
-            discovery method that corrects the failure mode of naive top-<em>K</em> selection, and tests
-            whether B &gt; C activation is statistically significant.
+            <strong className="text-white">Stage 2</strong> identifies trait-specific latents via a contrastive
+            method that avoids the failure mode of naive top-<em>K</em> selection, and tests whether
+            B &gt; C activation is statistically significant.
           </li>
           <li>
-            <strong className="text-white">Step 3</strong> injects the decoder vector of each identified latent
-            into the residual stream during generation; trait-consistent output at neutral prompts provides
-            causal evidence of functional involvement.
+            <strong className="text-white">Stage 3</strong> injects the decoder vector of each identified
+            latent into the residual stream during generation; trait-consistent output at neutral prompts
+            provides causal evidence of functional involvement.
           </li>
         </ol>
 
@@ -305,26 +339,28 @@ const PsychoScopePaper: React.FC = () => {
           <li>
             <strong className="text-white">The IPM hypothesis and experimental design.</strong> We formalise
             implicit speaker psychological modelling as a testable mechanistic claim and introduce a
-            three-condition contrastive methodology controlling for topic, length, and keyword co-occurrence.
+            three-condition contrastive methodology that controls for topic, utterance length, and keyword
+            co-occurrence.
           </li>
           <li>
             <strong className="text-white">Contrastive SAE discovery.</strong> We identify and document a
-            systematic failure mode in naive top-<em>K</em> latent discovery and introduce a simple, effective
+            systematic failure mode in naive top-<em>K</em> latent discovery and implement a simple, effective
             contrastive correction — a methodological contribution applicable beyond personality research.
           </li>
           <li>
             <strong className="text-white">Empirical evidence across all Big Five traits and Narcissism.</strong>{' '}
             First systematic, statistically rigorous evidence that all five major personality dimensions and
-            Narcissism are implicitly encoded in LLM SAE latents.
+            Narcissism are implicitly encoded in LLM SAE latents, detectable from stylistic speech without
+            trait keywords.
           </li>
           <li>
             <strong className="text-white">Inter-topic robustness analysis.</strong> The Neuroticism latent
-            generalises across 20 semantically diverse topics (ratio &gt; 2× on all 20), ruling out
+            generalises across all 20 semantically diverse topics (ratio &gt; 2× on all 20), ruling out
             topic-specific artefacts.
           </li>
           <li>
             <strong className="text-white">Causal steering verification.</strong> Decoder-vector intervention
-            demonstrates functional involvement of identified latents, moving beyond correlational claims.
+            demonstrates the functional involvement of identified latents, going beyond correlational claims.
           </li>
         </ol>
       </section>
@@ -332,75 +368,107 @@ const PsychoScopePaper: React.FC = () => {
       {/* ── 2. Related Work ────────────────────────────────────────────────────── */}
       <section className="mb-12">
         <H2>2. Related Work</H2>
+        <p className="mb-4">
+          Our work sits at the intersection of three research areas: mechanistic interpretability via sparse
+          autoencoders, computational personality and psycholinguistics, and Theory of Mind in language models.
+        </p>
 
         <H3 blue>2.1 Sparse Autoencoders for Mechanistic Interpretability</H3>
         <p className="mb-4">
           The central challenge in interpreting neural network activations is <em>polysemanticity</em>:
-          individual neurons respond to multiple unrelated concepts (Elhage et al., 2022). Sparse Autoencoders
+          individual neurons respond to many unrelated concepts (Elhage et al., 2022). Sparse Autoencoders
           address this by projecting dense activation vectors into a higher-dimensional sparse space where each
           latent dimension is approximately monosemantic.
         </p>
         <p className="mb-4">
           Cunningham et al. (2023) demonstrated that SAEs trained on GPT-2 residual-stream activations recover
-          interpretable features spanning syntax, semantics, and factual knowledge. Templeton et al. (2024)
-          scaled this to Claude 3 Sonnet. Bricken et al. (2023) established the theoretical grounding for
-          dictionary learning in transformer circuits. The Gemma Scope release (Lieberum et al., 2024) provided
-          open SAE weights for Gemma 2, and Gemma Scope 2 extended this to Gemma 3, which we use in our
-          experiments.
+          interpretable features encompassing syntax, semantics, and factual knowledge. Templeton et al. (2024)
+          scaled this to Claude 3 Sonnet, revealing features including abstract concepts, emotional states, and
+          reasoning patterns. Bricken et al. (2023) laid the theoretical foundations for dictionary learning in
+          transformer circuits. The Gemma Scope release (Lieberum et al., 2024) provided open SAE weights for
+          Gemma 2, and the subsequent Gemma Scope 2 extended this to Gemma 3 (Gemma Scope 2, 2025), which we
+          use in our experiments. Thasarathan et al. (2025) demonstrate cross-model concept alignment via
+          universal SAEs, establishing that SAE features are not model-idiosyncratic artefacts.
         </p>
         <div className="bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded-r my-4">
           <p className="text-amber-200 text-sm leading-relaxed">
-            <strong>Key methodological contribution:</strong> We identify a failure mode in naive
-            top-<em>K</em> latent discovery — ranking by mean activation on A-condition texts recovers
-            high-magnitude latents shared across all six traits (formal register, document structure features),
-            not class-specific features. We introduce contrastive discovery as a correction.
+            <strong>Key methodological contribution:</strong> We identify and document a{' '}
+            <strong>failure mode in naive top-<em>K</em> latent discovery</strong>: ranking latents by mean
+            activation recovers high-magnitude latents shared across many input types (formal register,
+            document structure), not class-specific features. We introduce contrastive discovery as a
+            correction. To our knowledge, this failure mode has not been explicitly documented in the SAE
+            literature, though contrastive approaches have been used implicitly in steering-vector research.
           </p>
         </div>
+        <p>
+          Prior SAE work focused on factual knowledge, syntactic structure, and domain features. The
+          representation of <em>psychological traits of text authors</em> — as opposed to properties of the
+          text itself — has not been systematically studied.
+        </p>
 
         <H3 blue>2.2 Computational Personality and Psychological State Detection</H3>
         <p className="mb-4">
-          Mairesse et al. (2007) showed that Big Five traits correlate reliably with lexical features including
-          LIWC categories. Schwartz et al. (2013) extended this to social media at scale. Safdari et al. (2023)
-          demonstrated that frontier LLMs produce reliable personality profiles when administered standardised
-          questionnaires. Handa et al. (2025) found significant method-dependent variance in personality probing
-          with downstream behavioural effects.
+          Mairesse et al. (2007) showed that Big Five traits reliably correlate with lexical features including
+          LIWC categories. Schwartz et al. (2013) applied this to social media at scale, demonstrating
+          reproducible lexical signatures for Neuroticism, Extraversion, and Openness. More recently, Safdari
+          et al. (2023) demonstrated that frontier LLMs produce reliable personality profiles when administered
+          standardised questionnaires. Handa et al. (2025) found significant method-dependent variance in
+          personality probing across LLMs, with downstream behavioural effects.
         </p>
         <p className="mb-4">
-          Critically, this body of work treats the LLM as a <em>classifier</em> applied to surface features
-          or as a <em>subject</em> of personality assessment — not as a system with internal representations
+          Crucially, this body of work treats the LLM as a <em>classifier</em> applied to surface features or
+          as an <em>object</em> of personality assessment — not as a system with internal representations
           encoding <em>speaker</em> personality. The mechanistic question has not been addressed.
         </p>
-        <p>
+        <p className="mb-4">
           Closest to our work is Onysk &amp; Huys (2025), who use supervised sparse autoencoders trained to
-          predict PHQ-9 clinical depression scores from LLM activations. Our work is complementary: we study
-          subclinical Big Five personality traits; we use an <em>unsupervised</em> contrastive method requiring
-          no clinical labels; and our focus is mechanistic rather than predictive. The convergence of both
-          supervised and unsupervised approaches on the same conclusion strengthens the overall case for the
-          IPM hypothesis.
+          predict PHQ-9 clinical depression scores from LLM activations, finding that residual streams contain
+          structured representations of clinical symptom severity. Our works are complementary: we study
+          subclinical Big Five personality traits rather than pathological depression; we use an{' '}
+          <em>unsupervised</em> contrastive method requiring no clinical labels; and our focus is mechanistic
+          rather than predictive. The convergence of both supervised and unsupervised approaches on the same
+          conclusion strengthens the overall case for implicit psychological modelling.
+        </p>
+        <p>
+          DeWall et al. (2011) document that narcissistic speech is characterised by specific implicit
+          linguistic patterns including reduced first-person singular usage and increased profane/aggressive
+          language, motivating our inclusion of Narcissism as a non-Big-Five construct.
         </p>
 
         <H3 blue>2.3 Activation Steering and Causal Intervention</H3>
         <p className="mb-4">
-          Turner et al. (2023) introduced activation addition: adding a steering vector to the residual stream
-          shifts model behaviour toward a target concept without gradient updates. Rimsky et al. (2024) extended
-          this to contrastive activation addition, demonstrating reliable behavioural changes for sycophancy,
-          refusal, and political opinions. Our causal step differs: steering vectors are derived directly from
-          SAE decoder weights — the decoder column{' '}
+          Identifying a correlation is not enough to establish a causal relationship. Turner et al. (2023)
+          introduced activation addition: adding a steering vector to the residual stream shifts the behaviour
+          of the model towards a target concept without gradient updates. Rimsky et al. (2024) extended this to
+          contrastive activation addition, demonstrating reliable behavioural changes for sycophancy, refusal,
+          and political opinions. Our causal step differs in that steering vectors are derived directly from SAE
+          decoder weights — the decoder column{' '}
           <code className="text-blue-300 font-mono text-sm">w_dec[i] ∈ ℝ^d_model</code> is precisely the
-          direction in residual-stream space associated with latent <em>i</em>.
+          direction in residual-stream space associated with latent <em>i</em>. Using decoder vectors as
+          steering directions has been investigated within the Anthropic interpretability line (Templeton et al.,
+          2024) but has not been applied to personality traits identified via contrastive discovery.
         </p>
 
         <H3 blue>2.4 Theory of Mind in Large Language Models</H3>
         <p className="mb-4">
-          Kosinski (2023) argued that ToM capabilities emerge spontaneously in sufficiently large LLMs.
-          Ullman (2023) challenged this, showing that minor perturbations cause large performance drops
-          inconsistent with genuine belief tracking. Our work takes a different stance: rather than testing
-          behavioural ToM, we ask whether the <em>internal representations</em> contain implicit speaker mental
-          models — orthogonal to behavioural benchmarks.
+          Kosinski (2023) argued that ToM capabilities emerge spontaneously in sufficiently large LLMs,
+          demonstrated through false-belief tasks. Ullman (2023) challenged this, showing that minor
+          perturbations lead to significant performance drops inconsistent with genuine belief tracking. Our
+          work takes a different approach: rather than testing behavioural ToM, we ask whether the{' '}
+          <em>internal representations</em> contain implicit speaker mental models — orthogonal to behavioural
+          benchmarks. Under the MDL framework (Ayonrinde et al., 2024), encoding a speaker's psychological
+          state is the most compact explanation for distributional regularities in their token sequences.
+          Tenney et al. (2019) establish that higher layers of transformers encode increasingly abstract
+          semantic and pragmatic features, motivating our focus on the later layers of the residual stream.
         </p>
 
         <H3 blue>2.5 Summary and Gap</H3>
-        <p className="mb-4">Table 1 positions our work relative to the literature.</p>
+        <p className="mb-4">
+          Table 1 positions our work relative to the literature. No prior work has: (a) used SAEs to study
+          whether LLMs encode speaker personality traits in residual streams, (b) introduced contrastive
+          discovery to isolate trait-specific latents, or (c) provided causal verification of personality
+          latents via decoder-vector steering across all Big Five dimensions.
+        </p>
         <TableContainer>
           <thead className="bg-gradient-to-r from-blue-900/30 to-transparent">
             <tr>
@@ -449,13 +517,15 @@ const PsychoScopePaper: React.FC = () => {
           The central methodological challenge is controlling for keyword co-occurrence. A naive approach —
           comparing texts that mention "anxious" to texts that mention "calm" — cannot distinguish between the
           model detecting the trait and the model detecting the keyword. Our three-condition design separates
-          the <em>latent discovery</em> phase from the <em>hypothesis test</em> phase.
+          the <em>latent discovery</em> phase from the <em>hypothesis testing</em> phase.
         </p>
         <p>
-          The core test condition (B) requires that trait information be conveyed exclusively through linguistic
-          style — word choice, syntactic patterns, hedging behaviour, sentence rhythm — with all
-          trait-identifying keywords explicitly banned. The control condition (C) uses texts from the opposite
-          personality pole, matched on topic, length, and the same keyword prohibition.
+          The core test condition (<strong className="text-white">B</strong>) requires that trait information
+          be conveyed exclusively through linguistic style — word choice, syntactic patterns, hedging behaviour,
+          sentence rhythm — with all trait-identifying keywords explicitly banned. The control condition (C)
+          uses texts from the opposite personality pole, matched on topic, length, and the same keyword
+          prohibition. Any systematic difference in SAE activations between B and C therefore cannot be
+          attributed to surface lexical features.
         </p>
 
         <H3 blue>3.2 Three-Condition Structure</H3>
@@ -465,14 +535,15 @@ const PsychoScopePaper: React.FC = () => {
             <div className="font-bold text-white font-sans text-lg mb-2">Explicit</div>
             <div className="text-sm text-gray-400">
               Third-person descriptions with trait keywords required. Used <em>only</em> for latent discovery —
-              never in hypothesis testing.
+              never in hypothesis testing. This separation ensures discovered latents are not trivially validated
+              on the same distributional context used to find them.
             </div>
           </div>
           <div className="bg-white/5 rounded-lg border border-blue-500/30 p-5 shadow-[0_0_20px_rgba(59,130,246,0.07)]">
             <div className="text-xs font-sans uppercase tracking-widest text-blue-400 mb-2">Condition B</div>
             <div className="font-bold text-white font-sans text-lg mb-2">Implicit</div>
             <div className="text-sm text-gray-400">
-              First-person speech through style alone, all keywords strictly prohibited.{' '}
+              First-person speech expressing the trait through style alone, all keywords strictly prohibited.{' '}
               <strong className="text-blue-300">Primary hypothesis test.</strong>
             </div>
           </div>
@@ -481,7 +552,8 @@ const PsychoScopePaper: React.FC = () => {
             <div className="font-bold text-white font-sans text-lg mb-2">Baseline</div>
             <div className="text-sm text-gray-400">
               First-person speech from the <em>opposite</em> personality pole — same topic, same keyword
-              prohibition, same length target.
+              prohibition, same length target. The matched control that isolates psychological-pole differences
+              from all other variables.
             </div>
           </div>
         </div>
@@ -517,24 +589,38 @@ const PsychoScopePaper: React.FC = () => {
           </tbody>
         </TableContainer>
         <p className="text-sm text-gray-500 mt-1">
-          Table 2: Trait pairs. Full banned keyword lists in Appendix B.
+          Table 2: Trait pairs and sample banned keywords. Full banned keyword lists (15–20 items per trait
+          including morphological variants) in Appendix B.
         </p>
 
         <H3 blue>3.4 Topic Diversity</H3>
         <p>
-          To prevent topic-specific confounds, we hold 20 everyday situations constant across all traits and
-          conditions, spanning five semantic domains: <em>domestic</em> (4 topics), <em>social</em> (4),{' '}
-          <em>work/productivity</em> (4), <em>emotional/evaluative</em> (4), and{' '}
-          <em>planning/future</em> (4). Domain diversity is essential for the inter-topic consistency
-          analysis: a latent generalising across all five domains encodes the trait rather than a
-          domain-specific discourse pattern.
+          To prevent topic-specific confounds — where a latent fires on a topic rather than a trait — we hold
+          20 everyday situations constant across all traits and conditions, spanning five semantic domains:{' '}
+          <em>domestic</em> (4 topics), <em>social</em> (4), <em>work/productivity</em> (4),{' '}
+          <em>emotional/evaluative</em> (4), and <em>planning/future</em> (4). Topic diversity is essential
+          for the inter-topic consistency analysis: a latent that generalises across all five domains is
+          encoding the trait rather than a domain-specific discourse pattern.
         </p>
 
         <H3 blue>3.5 Generation and Validation</H3>
         <p className="mb-4">
           All texts were generated using Gemini 3 Flash via the OpenRouter API, with 3 repetitions per (trait,
-          topic) combination at temperatures 0.85, 0.90, 0.95. Automated validation: (1) keyword check —
-          rejected if any banned word appeared; (2) language check — rejected if &lt;70% ASCII characters;
+          topic) combination at temperatures 0.85, 0.90, 0.95 to ensure lexical diversity.
+        </p>
+        <p className="mb-4 text-sm text-gray-400">
+          We address the concern that LLM-generated personality texts may reflect model stereotypes rather than
+          authentic human expression through two measures. First, our experimental design controls for this
+          systematically: both B and C texts are generated by the same model with the same process; if LLM
+          stereotypes were driving the activation differences, we would expect <em>both</em> conditions to
+          exhibit elevated activation rather than a systematic B &gt; C contrast. The observed B &gt; C
+          pattern across 20 semantically diverse topics thus reflects structure beyond stereotype-level
+          generation. Second, we conduct a blind validation study (§3.7) confirming that trait expression in
+          B-condition texts is authentically recoverable.
+        </p>
+        <p className="mb-4 text-sm text-gray-400">
+          Automated validation applied: (1) keyword check — texts rejected if any banned word or derivative
+          appeared; (2) language check — texts rejected if &lt;70% of alphabetic characters were ASCII;
           (3) retry logic — up to 3 retries per failed text.
         </p>
         <div className="flex items-center gap-5 bg-green-950/20 border border-green-500/20 rounded-lg p-5 my-4">
@@ -544,28 +630,23 @@ const PsychoScopePaper: React.FC = () => {
             20 topics × 3 conditions × 3 temperatures.
           </div>
         </div>
-        <p className="text-sm text-gray-500">
-          We address the concern about LLM-generated personality texts reflecting model stereotypes through
-          two measures. First, our design controls for this systematically: both B and C texts are generated
-          by the same model with the same process — if stereotypes drove activation differences, we would
-          expect both conditions to show elevated activations, not a systematic B &gt; C contrast. Second,
-          blind validation (§3.7) confirms authentic stylistic encoding.
-        </p>
 
         <H3 blue>3.6 Statistical Power</H3>
         <p>
           With <em>n</em> = 60 texts per (trait, condition) group (20 topics × 3 reps), power analysis for
           the planned Mann-Whitney <em>U</em> test (one-tailed, α = 0.05, power = 0.80) confirms coverage for
           medium (<em>d</em> = 0.5, need <em>n</em> = 25) and large (<em>d</em> = 0.8, need <em>n</em> = 10)
-          effects.
+          effects. Given established lexical signatures for Big Five traits (Mairesse et al., 2007; Schwartz
+          et al., 2013), medium-to-large effects are the a priori expected range.
         </p>
 
         <H3 blue>3.7 Dataset Validation</H3>
         <p className="mb-4">
-          To verify that B-condition texts encode personality through style rather than keywords, we conducted
-          a blind validation study. An independent instance of Gemini 3 Flash (temperature = 0.0) was
-          presented with 30 B-condition texts (5 per trait, seed = 42) without labels or contextual cues,
-          and asked to identify the expressed personality trait from a six-item list.
+          To verify that B-condition texts encode personality through style rather than keywords — a prerequisite
+          for the hypothesis test to be meaningful — we conducted a blind validation study. An independent
+          instance of Gemini 3 Flash (temperature = 0.0) was presented with 30 B-condition texts (5 per trait,
+          randomly sampled with seed = 42) without labels or contextual cues, and was asked to identify the
+          expressed personality trait from the six-item list.
         </p>
         <div className="grid grid-cols-3 gap-4 my-6">
           {[
@@ -580,15 +661,21 @@ const PsychoScopePaper: React.FC = () => {
           ))}
         </div>
         <p className="text-sm text-gray-500">
-          Diagonal confusion matrix. Binomial test: <em>p</em> &lt; 0.001 vs. chance baseline of 16.7%.
-          This confirms that B-condition texts contain recoverable trait signal through style alone,
-          independently of the keyword prohibition — validating the core design assumption.
+          The model correctly classified all 30 texts (accuracy = 100%, Cohen's κ = 1.00,{' '}
+          <em>p</em> &lt; 0.001 vs. chance baseline of 16.7%; binomial test; diagonal confusion matrix).
+          Per-trait accuracy was 100% for all six traits. This confirms that B-condition texts contain
+          recoverable trait signal through style alone, independently of the keyword prohibition — validating
+          the core design assumption.
         </p>
       </section>
 
       {/* ── 4. Method ──────────────────────────────────────────────────────────── */}
       <section className="mb-12">
         <H2>4. Method</H2>
+        <p className="mb-4">
+          Figure 1 illustrates the overall experimental pipeline connecting dataset construction, SAE analysis,
+          and causal verification.
+        </p>
 
         <Fig
           src={figure1}
@@ -609,11 +696,20 @@ const PsychoScopePaper: React.FC = () => {
         <H3 blue>4.1 Model and SAE</H3>
         <p className="mb-4">
           <strong className="text-white">Base model.</strong> We use Gemma 3 4B in its pre-trained (PT)
-          variant. The PT variant was chosen over the instruction-tuned (IT) variant for two reasons. First,
-          the PT model processes input text as continuation, modelling the speaker's voice directly without
-          the mediating influence of an assistant persona. Second, instruction tuning systematically suppresses
-          authorial style in favour of a standardised response register. Gemma 3 4B has 34 transformer layers.
+          variant. The PT variant was chosen deliberately over the instruction-tuned (IT) variant for two
+          reasons. First, the PT model processes input text as continuation, modelling the speaker's voice
+          directly without the mediating influence of an assistant persona. Second, instruction tuning
+          systematically suppresses authorial style in favour of a standardised response register, which would
+          attenuate the psychological signal we aim to detect. Gemma 3 4B has a multimodal architecture with
+          34 transformer layers in the language decoder.
         </p>
+        <div className="bg-white/5 border border-white/10 rounded-lg p-4 my-4 text-sm text-gray-400">
+          <strong className="text-gray-300">Implementation note:</strong> Due to Gemma 3's multimodal wrapper,
+          layers must be accessed via{' '}
+          <code className="text-blue-300 font-mono text-xs">model.model.language_model.layers</code> rather
+          than <code className="text-blue-300 font-mono text-xs">model.model.layers</code> — a non-trivial
+          detail for reproducibility.
+        </div>
         <p className="mb-4">
           <strong className="text-white">Sparse Autoencoder.</strong> We use Gemma Scope 2, specifically the
           JumpReLU SAE trained on the residual stream post-layer 22, with dictionary size{' '}
@@ -633,9 +729,11 @@ const PsychoScopePaper: React.FC = () => {
         </p>
         <p>
           <strong className="text-white">Layer selection.</strong> We use layer 22 of 34. Abstract semantic
-          and pragmatic features crystallise in later transformer layers (Tenney et al., 2019). Layer 22 falls
-          within a global-attention block, providing the broadest contextual integration of the input sequence
-          — important for multi-sentence personality inference.
+          and pragmatic features crystallise in later transformer layers (Tenney et al., 2019). Empirically,
+          pilot experiments confirmed stronger trait-discriminative activations at layer 22 than at earlier
+          layers. The model uses a 5:1 hybrid attention pattern (5 local-window × 1 global), and layer 22
+          falls within a global-attention block, providing the broadest contextual integration of the input
+          sequence — important for multi-sentence personality inference.
         </p>
 
         <H3 blue>4.2 Activation Extraction</H3>
@@ -657,7 +755,7 @@ const PsychoScopePaper: React.FC = () => {
             <strong>Failure mode of naive top-K:</strong> Ranking latents by mean activation on A-condition
             texts recovers high-magnitude latents shared across all six traits (latents 966, 839, 1263 —
             all associated with formal written English). These respond to properties of the{' '}
-            <em>text type</em>, not the <em>trait</em>. We verified this failure mode across all six traits
+            <em>text type</em>, not the <em>trait</em>. We checked this failure mode across all six traits
             before applying the correction.
           </p>
         </div>
@@ -674,8 +772,10 @@ const PsychoScopePaper: React.FC = () => {
         </p>
         <p className="text-sm text-gray-400">
           <strong className="text-white">Latent interpretation</strong> via the effective unembedding matrix{' '}
-          <code className="text-blue-300 font-mono text-xs">W_U^eff = W_U · diag(γ)</code>. Top predicted
-          tokens:{' '}
+          <code className="text-blue-300 font-mono text-xs">W_U^eff = W_U · diag(γ)</code>, where{' '}
+          <code className="text-blue-300 font-mono text-xs">W_U</code> is the LM head and{' '}
+          <code className="text-blue-300 font-mono text-xs">γ</code> is the final layer-norm scale. Top
+          predicted tokens:{' '}
           <code className="text-blue-300 font-mono text-xs">argmax_v (W_U^eff · w_dec,i)_v</code>, providing
           direct semantic interpretation without additional labelling.
         </p>
@@ -688,12 +788,15 @@ const PsychoScopePaper: React.FC = () => {
           </li>
           <li>
             <strong className="text-white">Test:</strong> One-tailed Mann-Whitney <em>U</em> (B &gt; C),
-            chosen for robustness to zero-inflated distributions characteristic of SAE activations.
+            chosen for robustness to the zero-inflated distributions characteristic of SAE activations. Many
+            texts produce zero activation on any given latent, violating the normality assumption of parametric
+            tests.
           </li>
           <li>
-            <strong className="text-white">Effect size:</strong> Cohen's <em>d</em> (descriptive). Note:{' '}
-            <em>d</em> may be overestimated when C-baseline activations are near zero; Mann-Whitney{' '}
-            <em>U</em> is the primary inferential statistic.
+            <strong className="text-white">Effect size:</strong> Cohen's <em>d</em> (reported descriptively).
+            We note that <em>d</em> may be overestimated when C-baseline activations are near zero — the pooled
+            standard deviation is small, inflating the standardised difference. Thus, Mann-Whitney <em>U</em>{' '}
+            is the primary inferential statistic.
           </li>
           <li>
             <strong className="text-white">Multiple comparisons:</strong> Bonferroni correction across 6
@@ -711,16 +814,20 @@ const PsychoScopePaper: React.FC = () => {
 
         <H3 blue>4.6 Causal Verification via Activation Steering</H3>
         <p className="mb-3">
-          We inject the decoder vector of a discovered latent into the residual stream during generation:
+          Correlation does not imply causation. We inject the decoder vector of a discovered latent into the
+          residual stream during generation:
         </p>
         <Eq id="8">{`ĥ_t = h_t + α · ‖h_t‖₂ · w_dec,i`}</Eq>
         <p className="mb-4 text-sm text-gray-400">
-          where α is the steering coefficient and norm scaling ensures perturbation proportional to the existing
-          activation scale. Steering applied at layer 16.
+          where α is the steering coefficient and norm scaling ensures the perturbation is proportional to the
+          existing activation scale. Steering is applied at layer 16 to allow propagation through later layers
+          before generation. The hook handles both prefill (tuple output) and decode phases (tensor output due
+          to KV-cache) separately.
         </p>
         <p className="text-sm text-gray-400">
-          Test conditions: α ∈ {'{'}0.0, 0.08, 0.14, 0.20{'}'} on five neutral prompts per trait. α = 0.0
-          serves as unsteered baseline. Greedy decoding, repetition penalty 1.2, max 120 new tokens.
+          Test conditions: α ∈ {'{'}0.0, 0.08, 0.14, 0.20{'}'} on five neutral prompts per trait.
+          Coefficient 0.0 serves as the unsteered baseline. Greedy decoding, repetition penalty 1.2,
+          max 120 new tokens.
         </p>
       </section>
 
@@ -730,8 +837,8 @@ const PsychoScopePaper: React.FC = () => {
 
         <H3 blue>5.1 Contrastive Latent Discovery</H3>
         <p className="mb-4">
-          The contrast with naive top-<em>K</em> is stark: the naive method returns latents 966, 839, and
-          1263 — associated with formal document formatting — as the top-5 for <em>every</em> trait.
+          The contrast with the naive top-<em>K</em> is striking: the naive method returns latents 966, 839,
+          and 1263 — associated with formal document formatting — as the top-5 for <em>every</em> trait.
           Contrastive discovery returns semantically distinct trait-specific latents for each trait.
         </p>
         <TableContainer>
@@ -802,15 +909,16 @@ const PsychoScopePaper: React.FC = () => {
           latent <em>i</em>*(<em>t</em>). Δ = contrastive activation score (Eq. 6).
         </p>
         <p className="text-sm text-gray-400 mt-4">
-          The Narcissism latent 2892 (<em>supposedly, allegedly, purportedly</em>) — not selected as primary —
-          encodes an indirect but theoretically coherent signal: narcissistic speech is characterised by
-          delegitimising others' claims through epistemic hedging (DeWall et al., 2011), captured here as
-          the rhetorical register of reported dismissal.
+          The Narcissism latent 2892 (<em>supposedly, allegedly, purportedly</em>) — not selected as the
+          primary one — encodes an indirect but theoretically coherent signal: narcissistic speech is
+          characterised by delegitimising others' claims through epistemic hedging (DeWall et al., 2011),
+          captured here as the rhetorical register of reported dismissal.
         </p>
 
         <H3 blue>5.2 Main Hypothesis Test</H3>
         <p className="mb-4">
-          All six traits show significant B &gt; C activation after Bonferroni correction (α′ = 0.0083).
+          Table 4 presents the central results. All six traits show significant B &gt; C activation after
+          Bonferroni correction (α′ = 0.0083).
         </p>
         <TableContainer>
           <thead className="bg-gradient-to-r from-amber-900/30 to-transparent">
@@ -846,15 +954,17 @@ const PsychoScopePaper: React.FC = () => {
           </tbody>
         </TableContainer>
         <p className="text-sm text-gray-500 mt-1">
-          Table 4: Hypothesis test results (Mann-Whitney <em>U</em>, one-tailed). All Bonferroni-corrected{' '}
-          <em>p</em>-values &lt; 0.001. Note: <em>d</em> may be overestimated for near-zero C means.
+          Table 4: Hypothesis test (Mann-Whitney <em>U</em>, one-tailed). All Bonferroni-corrected{' '}
+          <em>p</em>-values &lt; 0.001.{' '}
+          <em>Note: d may be overestimated for near-zero C means; ratio and MW-U are primary.</em>
         </p>
         <p className="mt-4 text-gray-400 text-sm leading-relaxed">
-          Five of six traits show Cohen's <em>d</em> &gt; 0.8 (conventionally "large"); three exceed{' '}
-          <em>d</em> &gt; 1.5. The weakest effect is Narcissism (<em>d</em> = 0.68, ratio = 2.8×), which
-          nonetheless remains significant at <em>p</em> = 1.8 × 10⁻⁶. We interpret the weaker Narcissism
-          signal as reflecting the construct's linguistic heterogeneity — it manifests as grandiosity,
-          entitlement, or contempt depending on context, distributing the signal across multiple latents.
+          Five of six traits show Cohen's <em>d</em> &gt; 0.8 (conventionally "large" in psychology); three
+          exceed <em>d</em> &gt; 1.5. The weakest effect is Narcissism (<em>d</em> = 0.68, ratio = 2.8×),
+          which nonetheless remains significant at <em>p</em> = 1.8 × 10⁻⁶ after correction. We interpret
+          the weaker Narcissism signal as reflecting the linguistic heterogeneity of the construct — it
+          manifests as grandiosity, entitlement, or contempt depending on context, distributing the signal
+          across multiple latents rather than concentrating it in one.
         </p>
 
         <H3 blue>5.3 Inter-Topic Consistency</H3>
@@ -873,9 +983,9 @@ const PsychoScopePaper: React.FC = () => {
         <p className="mt-4">
           Latent 745 shows ratio &gt; 2× on all 20/20 topics (range: 3.4×–10⁵×; full data in Appendix D).
           The minimum-ratio topic, <em>reacting to unexpected good news</em>, represents a genuine edge case:
-          both neurotic and stable speakers may produce emotionally elevated language, naturally reducing
-          discriminability. The pattern nonetheless demonstrates that the effect is not topic-specific; it
-          generalises across domestic, social, work, emotional, and planning contexts alike.
+          both neurotic and emotionally stable speakers may produce emotionally intense language, naturally
+          reducing discriminability. The pattern nonetheless demonstrates that the effect is not topic-specific;
+          it generalises across domestic, social, work, emotional, and planning contexts alike.
         </p>
 
         <H3 blue>5.4 Token-Level Activation Heatmaps</H3>
@@ -901,14 +1011,14 @@ const PsychoScopePaper: React.FC = () => {
 
         <H3 blue>5.5 Causal Verification via Activation Steering</H3>
         <p className="mb-4">
-          Steering outcomes at α = 0.08 — the lowest coefficient producing clearly trait-consistent generation
-          while maintaining lexical coherence. Baseline (α = 0.0) is neutral across all traits.
+          Table 5 summarises steering outcomes at α = 0.08 — the lowest coefficient producing clearly
+          trait-consistent generation while maintaining lexical coherence.
         </p>
         <TableContainer>
           <thead className="bg-gradient-to-r from-green-900/30 to-transparent">
             <tr>
               <Th>Trait / Latent</Th>
-              <Th>Steered output excerpt (prompt: "How was your day today?", α = 0.08)</Th>
+              <Th>Example steered output (prompt: "How was your day today?", α = 0.08)</Th>
             </tr>
           </thead>
           <tbody>
@@ -926,9 +1036,26 @@ const PsychoScopePaper: React.FC = () => {
           </tbody>
         </TableContainer>
         <p className="text-sm text-gray-500 mt-1">
-          Table 5: Steering outcomes. At α = 0.14, intensified effects with partial coherence degradation;
-          at α = 0.20, outputs become incoherent — consistent with prior work on steering-vector saturation.
+          Table 5: Steering outcomes at α = 0.08 (greedy decoding, layer 16 injection). Baseline (α = 0)
+          is neutral across all traits.
         </p>
+        <div className="mt-4 space-y-2 text-sm text-gray-400">
+          <p>
+            At α = 0.14, all traits show intensified effects with partial coherence degradation; at α = 0.20,
+            outputs become incoherent, consistent with prior work on steering-vector saturation (Turner et al.,
+            2023).
+          </p>
+          <p>
+            Three observations deserve attention. <strong className="text-white">First</strong>, Neuroticism
+            shows the cleanest steering curve — the vocabulary of emotional suffering scales smoothly with
+            increasing α, consistent with its being the most semantically coherent latent (largest <em>d</em>,
+            20/20 topic consistency). <strong className="text-white">Second</strong>, Conscientiousness
+            steering activates artisanal craftsmanship discourse rather than abstract conscientiousness — a
+            theoretically informative result discussed in §6.3. <strong className="text-white">Third</strong>,
+            Openness produces a strikingly specific contemporary artist persona, suggesting that latent 3415
+            encodes a tightly bounded art-world discourse register.
+          </p>
+        </div>
       </section>
 
       {/* ── 6. Discussion ──────────────────────────────────────────────────────── */}
@@ -938,23 +1065,26 @@ const PsychoScopePaper: React.FC = () => {
         <H3 blue>6.1 What the Results Establish</H3>
         <p className="mb-4">
           Our central finding — B &gt; C activation for all six traits, after Bonferroni correction, across 20
-          diverse topics, with causal verification — is consistent with the IPM hypothesis.
+          diverse topics, with causal verification — is consistent with the IPM hypothesis: LLMs develop
+          internal representations of speaker psychological states that persist in the residual stream even
+          without trait keywords.
         </p>
         <div className="bg-white/5 border border-white/10 rounded-lg p-5 my-4">
           <p className="text-gray-300 text-sm leading-relaxed">
             <strong className="text-white">Important caveat:</strong> This finding does not claim that the
             model "understands" psychological states in any philosophically rich sense. What it shows is that
-            the model computes something functionally equivalent to a speaker psychological profile — a latent
+            the model computes something functionally equivalent to a speaker psychological profile: a latent
             variable that (a) covaries with trait-expressive language in the absence of keywords, (b)
             generalises across topics, and (c) causally influences generation when injected. Whether this
             constitutes a form of Theory of Mind or sophisticated pattern matching over linguistic regularities
-            is a question we deliberately leave open.
+            is a question we deliberately leave open — and one our experimental design cannot definitively
+            resolve.
           </p>
         </div>
 
         <H3 blue>6.2 Differential Detectability Across Traits</H3>
         <p className="mb-4">
-          The range <em>d</em> = 0.68–2.39 invites explanation. Three contributing factors:
+          The range <em>d</em> = 0.68–2.39 invites explanation. We propose three contributing factors:
         </p>
         <ul className="list-disc pl-6 space-y-3 marker:text-blue-500">
           <li>
@@ -964,29 +1094,34 @@ const PsychoScopePaper: React.FC = () => {
             latents.
           </li>
           <li>
-            <strong className="text-white">Corpus representation.</strong> Emotional distress vocabulary
+            <strong className="text-white">Corpus representation.</strong> The vocabulary of emotional distress
             (<em>anguish, sadness, sobbing</em>) is densely represented in fiction, therapy transcripts, and
-            social media. Narcissistic speech patterns are rarer and more heterogeneous, explaining why the
-            best Narcissism latent captures only one manifestation.
+            social media, making a dedicated latent more likely to emerge. Narcissistic speech patterns are
+            rarer and more heterogeneous, explaining why the best Narcissism latent captures only one
+            manifestation (contemptuous dismissal).
           </li>
           <li>
             <strong className="text-white">Psychological construct coherence.</strong> Neuroticism and
             Conscientiousness show high cross-situational consistency. Openness is more domain-specific —
-            its expression in art differs substantially from scientific or interpersonal contexts.
+            its expression in an art context differs substantially from its expression in a scientific or
+            interpersonal context, which may explain why latent 3415 captures only the aesthetic-creative
+            facet.
           </li>
         </ul>
 
         <H3 blue>6.3 Semantic Clusters vs. Psychological Constructs</H3>
         <p className="mb-4">
-          Steering experiments reveal an important nuance: identified latents encode the{' '}
+          Steering experiments revealed an important nuance: identified latents encode the{' '}
           <em>most frequent corpus-level manifestation</em> of a trait, not the abstract psychological
           construct. Conscientiousness maps to artisanal craftsmanship discourse; Openness to contemporary
           visual art language.
         </p>
         <p>
           This is theoretically expected under the MDL framework (Ayonrinde et al., 2024): the model represents
-          the most statistically compact explanation for an activation pattern, often a specific high-frequency
-          genre rather than an abstract category.{' '}
+          the most statistically compact explanation for an activation pattern, which often corresponds to a
+          specific high-frequency genre rather than an abstract category. The psychological trait and the
+          discourse genre are correlated in the training corpus — meticulous craftsmanship writing is produced
+          by conscientious people — so the latent encodes the conjunction.{' '}
           <strong className="text-white">Practical implication:</strong> when using SAE latents as
           psychological probes, researchers should expect genre-specific latents and should verify semantic
           coherence through both unembedding inspection and steering.
@@ -996,10 +1131,10 @@ const PsychoScopePaper: React.FC = () => {
         <p>
           Our unsupervised contrastive method differs from the supervised sSAE approach of Onysk &amp; Huys
           (2025) in precision versus generality. Their method yields latents optimised to capture clinically
-          validated symptom dimensions at the cost of requiring labelled clinical data. Our method is applicable
-          to any personality construct for which contrastive texts can be generated. The convergence of both
-          approaches on the conclusion that residual streams encode psychologically meaningful information
-          strengthens the overall case for the IPM hypothesis.
+          validated symptom dimensions, at the cost of requiring labelled clinical data. Our method is
+          applicable to any personality construct for which contrastive texts can be generated. The convergence
+          of both approaches on the conclusion that residual streams encode psychologically meaningful
+          information strengthens the overall case for the IPM hypothesis.
         </p>
 
         <H3 blue>6.5 Limitations and Future Work</H3>
@@ -1007,11 +1142,11 @@ const PsychoScopePaper: React.FC = () => {
           {[
             {
               title: 'Synthetic dataset.',
-              body: 'All texts are LLM-generated, raising the possibility of reflected stereotypes. Our three-condition design mitigates this systematically (B and C generated identically). Replication on human-authored corpora is the highest-priority future direction.',
+              body: 'All texts are LLM-generated, raising the possibility of reflected stereotypes. Our three-condition design mitigates this systematically (B and C are generated identically; any stereotype bias would affect both conditions equally), and blind validation confirms authentic stylistic encoding. Replication on human-authored corpora is the highest-priority future direction.',
             },
             {
               title: 'Single model and layer.',
-              body: 'Results are specific to Gemma 3 4B PT at layer 22. Cross-model replication (Llama 3, Mistral, Qwen) and multi-layer analysis would establish generalisability.',
+              body: 'Results are specific to Gemma 3 4B PT at layer 22. Cross-model replication (Llama 3, Mistral, Qwen) and multi-layer analysis would establish generalisability. The deliberate focus on a single model here enables depth of analysis — full contrastive discovery, 20-topic consistency, and causal verification — that a broader multi-model study would sacrifice.',
             },
             {
               title: 'Zero-inflated effect sizes.',
@@ -1058,13 +1193,14 @@ const PsychoScopePaper: React.FC = () => {
           mode of naive top-<em>K</em> selection. All six traits show significant B &gt; C activation
           (Mann-Whitney <em>U</em>, all <em>p</em> &lt; 0.001 after Bonferroni correction), with effect sizes{' '}
           <em>d</em> = 0.68–2.39. The Neuroticism latent generalises across all 20 tested topics (20/20 ratio
-          &gt; 2×). Causal verification via decoder-vector steering confirms functional involvement.
+          &gt; 2×). Causal verification via decoder-vector steering confirms functional involvement of
+          identified latents.
         </p>
         <div className="bg-white/5 border border-white/10 rounded-lg p-5 my-6 space-y-2">
           {[
             ['Finding 1', 'Naive top-K latent discovery fails systematically — contrastive discovery is a simple but necessary correction.'],
-            ['Finding 2', 'SAE latents encode the most frequent corpus-level manifestation of a trait, not the abstract construct.'],
-            ['Finding 3', 'Blind validation (100% accuracy, κ = 1.00, 30 held-out B-condition texts) confirms keyword-free personality encoding.'],
+            ['Finding 2', 'SAE latents encode the most frequent corpus-level manifestation of a trait rather than the abstract construct — a theoretically expected and methodologically important observation.'],
+            ['Finding 3', 'Blind validation (100% accuracy, κ = 1.00, 30 held-out B-condition texts) confirms that test-condition texts encode personality through style rather than keywords.'],
           ].map(([label, text]) => (
             <p key={label} className="text-sm text-gray-300 font-sans">
               <span className="text-blue-400 font-bold">{label}:</span> {text}
@@ -1072,9 +1208,11 @@ const PsychoScopePaper: React.FC = () => {
           ))}
         </div>
         <p className="mb-4">
-          These findings support the view that next-token prediction creates implicit pressure to represent
+          These results support the view that next-token prediction creates implicit pressure to represent
           speaker psychological states, yielding residual-stream representations that function as
-          Theory-of-Mind-like speaker models.
+          Theory-of-Mind-like speaker models. The extent to which this constitutes genuine psychological
+          understanding versus sophisticated linguistic pattern matching remains a productive open question
+          for mechanistic interpretability research.
         </p>
         <p>
           <strong className="text-white">Future directions</strong> include replication on human-authored
@@ -1088,25 +1226,27 @@ const PsychoScopePaper: React.FC = () => {
       <section className="pt-12 mt-12 border-t border-white/10">
         <h3 className="text-xl font-sans font-bold text-white mb-6">References</h3>
         <ol className="list-decimal pl-6 space-y-2 text-sm text-gray-500 font-sans">
-          <li>Ayonrinde, K., Pearce, M. T., &amp; Sharkey, L. (2024). Interpretability as compression: Reconsidering SAE explanations with MDL-SAEs. <em>arXiv:2410.11179</em>.</li>
+          <li>Ayonrinde, K., Pearce, M. T., &amp; Sharkey, L. (2024). Interpretability as compression: Reconsidering SAE explanations of neural activations with MDL-SAEs. <em>arXiv:2410.11179</em>.</li>
           <li>Bricken, T., et al. (2023). Towards monosemanticity: Decomposing language models with dictionary learning. <em>Anthropic Transformer Circuits Thread</em>. <a href="https://transformer-circuits.pub/2023/monosemantic-features" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 underline">Link</a></li>
           <li>Costa, P. T., &amp; McCrae, R. R. (1992). <em>Revised NEO Personality Inventory (NEO-PI-R) and NEO Five-Factor Inventory professional manual.</em> Psychological Assessment Resources.</li>
           <li>Cunningham, H., et al. (2023). Sparse autoencoders find highly interpretable features in language models. <em>arXiv:2309.08600</em>.</li>
-          <li>DeWall, C. N., et al. (2011). Narcissism and implicit attention seeking: Evidence from linguistic analyses. <em>Personality and Individual Differences</em>, 51(1), 57–62.</li>
+          <li>DeWall, C. N., et al. (2011). Narcissism and implicit attention seeking: Evidence from linguistic analyses of social networking and online presentation. <em>Personality and Individual Differences</em>, 51(1), 57–62.</li>
           <li>Elhage, N., et al. (2022). Toy models of superposition. <em>Anthropic Transformer Circuits Thread</em>. <a href="https://transformer-circuits.pub/2022/toy_model/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 underline">Link</a></li>
           <li>Gemma Scope 2 (2025). Google DeepMind Technical Report. <a href="https://deepmind.google/blog/gemma-scope-2-helping-the-ai-safety-community-deepen-understanding-of-complex-language-model-behavior/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 underline">Link</a></li>
           <li>Gemma Team (2025). Gemma 3 Technical Report. <em>arXiv:2503.19786</em>.</li>
           <li>Google DeepMind (2025). Gemini 3 Flash. <a href="https://deepmind.google/models/gemini/flash/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 underline">Link</a></li>
           <li>Handa, G., et al. (2025). Personality as a probe for LLM evaluation: Method trade-offs and downstream effects. <em>arXiv:2509.04794</em>.</li>
+          <li>Kim, S., Imieye, O., &amp; Yin, Y. (2025). Interpretable depression detection from social media text using LLM-derived embeddings. <em>arXiv:2506.06616</em>.</li>
           <li>Kosinski, M. (2023). Theory of mind may have spontaneously emerged in large language models. <em>arXiv:2302.02083</em>.</li>
           <li>Lieberum, T., et al. (2024). Gemma Scope: Open sparse autoencoders everywhere all at once on Gemma 2. <em>arXiv:2408.05147</em>.</li>
-          <li>Mairesse, F., et al. (2007). Using linguistic cues for the automatic recognition of personality. <em>Journal of Artificial Intelligence Research</em>, 30, 457–500.</li>
+          <li>Mairesse, F., et al. (2007). Using linguistic cues for the automatic recognition of personality in conversation and text. <em>Journal of Artificial Intelligence Research</em>, 30, 457–500.</li>
           <li>Onysk, J., &amp; Huys, Q. J. M. (2025). Quantifying depressive mental states with large language models. <em>arXiv:2502.09487</em>.</li>
           <li>Rimsky, N., et al. (2024). Steering Llama 2 via contrastive activation addition. In <em>Proceedings of ACL 2024</em>.</li>
           <li>Safdari, M., et al. (2023). Personality traits in large language models. <em>arXiv:2307.00184</em>.</li>
           <li>Schwartz, H. A., et al. (2013). Personality, gender, and age in the language of social media. <em>PLOS ONE</em>, 8(9), e73791.</li>
           <li>Templeton, A., et al. (2024). Scaling monosemanticity: Extracting interpretable features from Claude 3 Sonnet. <em>Anthropic Transformer Circuits Thread</em>. <a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 underline">Link</a></li>
           <li>Tenney, I., Das, D., &amp; Pavlick, E. (2019). BERT rediscovers the classical NLP pipeline. <em>ACL 2019 / arXiv:1905.05950</em>.</li>
+          <li>Teng, S., et al. (2025). Enhancing depression detection with chain-of-thought prompting. <em>arXiv:2502.05879</em>.</li>
           <li>Thasarathan, H., et al. (2025). Universal sparse autoencoders: Interpretable cross-model concept alignment. <em>arXiv:2502.03714</em>.</li>
           <li>Turner, A. M., et al. (2023). Activation addition: Steering language models without optimization. <em>arXiv:2308.10248</em>.</li>
           <li>Ullman, T. (2023). Large language models fail on trivial alterations to theory-of-mind tasks. <em>arXiv:2302.08399</em>.</li>
@@ -1123,7 +1263,8 @@ const PsychoScopePaper: React.FC = () => {
             Appendix A: Representative Dataset Examples
           </h3>
           <p className="text-sm text-gray-500 mb-6">
-            One complete A/B/C triplet per trait. All B and C texts contain no trait-identifying keywords.
+            One complete A/B/C triplet for each of the six studied traits. All B and C texts contain no
+            trait-identifying keywords.
           </p>
 
           {[
@@ -1211,8 +1352,8 @@ const PsychoScopePaper: React.FC = () => {
           <h3 className="text-xl font-sans font-bold text-white mb-1">Appendix C: Full Steering Outputs</h3>
           <p className="text-sm text-gray-500 mb-5">
             All four tested traits × 5 prompts × 2 key coefficients (α ∈ {'{'} 0.0, 0.08 {'}'}). Greedy
-            decoding, repetition_penalty = 1.2, max_new_tokens = 120, steering layer 16. Excerpts truncated
-            to ~80 characters.
+            decoding, repetition_penalty = 1.2, max_new_tokens = 120, steering layer 16. Response excerpts
+            truncated to ~80 characters.
           </p>
           <TableContainer>
             <thead className="bg-gradient-to-r from-gray-800/80 to-transparent">
@@ -1294,22 +1435,22 @@ const PsychoScopePaper: React.FC = () => {
             Appendix E: Negative Result — Pedantry Exploration
           </h3>
           <p className="mb-4">
-            Prior to the main experiment, we investigated whether <em>Pedantry</em> — excessive concern with
+            Prior to the main experiment, we investigated whether <em>Pedantry</em> — excessive attention to
             minor details and precision of language — could be detected as a distinct SAE latent. Contrastive
             discovery for Pedantry did not yield a semantically coherent primary latent; the highest-ranked
             contrastive latents were 966 (<em>documentation, formatted</em>), 355 (<em>paragraph, formatting</em>),
-            and 839 (<em>punctuation, syntax</em>) — all generic written-text structure features.
+            and 839 (<em>punctuation, syntax</em>) — all generic written-text structure features. Crucially,
+            latents 966 and 839 appeared in the naive top-<em>K</em> for every trait, confirming they encode
+            document formatting rather than psychological content.
           </p>
           <div className="bg-white/5 border border-white/10 rounded-lg p-5">
             <p className="text-sm text-gray-400 leading-relaxed">
-              <strong className="text-white">Interpretation:</strong> Latents 966 and 839 appeared in the
-              naive top-<em>K</em> for every trait, confirming they encode document formatting rather than
-              psychological content. Pedantry may not have a distinct SAE latent because: (a) it overlaps
-              heavily with Conscientiousness at the level of linguistic expression; (b) it is represented
-              across a diffuse combination of latents; or (c) the training corpus does not contain sufficient
-              pedantic speech separable from formal writing. This validates the contrastive discovery
-              methodology: it correctly identifies the absence of a clean trait-specific latent when none
-              exists.
+              <strong className="text-white">Interpretation:</strong> Pedantry may not have a distinct SAE
+              latent because: (a) it overlaps heavily with Conscientiousness at the level of linguistic
+              expression; (b) it is represented across a diffuse combination of latents; or (c) the training
+              corpus does not contain sufficient pedantic speech separable from formal writing. This validates
+              the contrastive discovery methodology: it correctly identifies the absence of a clean
+              trait-specific latent when none exists.
             </p>
           </div>
         </div>
