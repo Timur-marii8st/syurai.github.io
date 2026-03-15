@@ -219,7 +219,7 @@ const PsychProfilingPaper: React.FC = () => {
       <section className="mb-12">
         <h2 className="text-3xl font-sans font-bold text-white mb-6 border-b border-white/10 pb-2">6. Conclusion</h2>
         <p className="mb-4">
-            The study on a sample of N=800 confirmed that the Gemini 3.0 Flash model is capable of effectively solving psychometric tasks. We observe a qualitative leap: the model "sees" psychological axes with an accuracy approaching the reliability of psychological tests themselves.
+            The study on a sample of N=800 confirmed that the Gemini 3.1 Flash Lite model is capable of effectively solving psychometric tasks. We observe a qualitative leap: the model "sees" psychological axes with an accuracy approaching the reliability of psychological tests themselves.
         </p>
         <p className="mb-4">
             <strong>Future Work:</strong> In this study, we treated models as "black boxes." A promising direction is the transition to Mechanistic Interpretability methods. We plan to use Probing Classifiers and Sparse Autoencoders to analyze the open weights of models to find specific neurons and directions in the latent space responsible for encoding the identified psychological features.
