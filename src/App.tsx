@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   Routes,
   Route,
@@ -14,7 +14,9 @@ import {
   Flame,
   ArrowRight,
   Ghost,
-  Users
+  Users,
+  Brain,
+  BookOpen
 } from 'lucide-react';
 
 // Pages
@@ -26,6 +28,8 @@ import SabyAgentPage from './products/SabyAgentPage';
 import TeamPage from './Team';
 import TimurProfile from './team/TimurProfile';
 import ArjunProfile from './team/ArjunProfile';
+import MLClubPage from './MLClubPage';
+import EducationPage from './EducationPage';
 
 // --- Components ---
 
@@ -46,7 +50,7 @@ const GlobalBackButton = () => {
   const { t } = useLanguage();
   
   // Скрываем кнопку на этих путях
-  const hiddenPaths = ['/', '/motivi', '/saby-agent', '/team/timur', '/team/arjun'];
+  const hiddenPaths = ['/', '/motivi', '/saby-agent', '/team/timur', '/team/arjun', '/ml-club'];
   
   if (hiddenPaths.includes(pathname)) return null;
 
@@ -79,15 +83,40 @@ const StackItem: React.FC<StackItemProps & { icon: React.ReactNode }> = ({ name,
 // --- MAIN HOME PAGE COMPONENT ---
 const Home = () => {
   const { t } = useLanguage();
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    setScrollY(window.scrollY);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  // Parallax: image moves at 0.4x scroll speed; fades out over first 800px
+  const parallaxY = scrollY * 0.4;
+  const bgOpacity = Math.max(0, 1 - scrollY / 800);
+
   return (
     <div className="min-h-screen bg-[#0a0c10] text-[#EAE0D5] font-sans selection:bg-amber-500/30 overflow-x-hidden relative">
-      {/* Background Effects */}
+      {/* Background: Painting with parallax */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#080a0f] via-[#0d1116] to-[#141210]" />
-        <div className="absolute bottom-[-20%] left-[-20%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tr from-slate-900/40 via-[#1a2230]/20 to-transparent blur-[150px]" />
-        <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-bl from-[#4a3a2a]/30 via-[#3d2d20]/20 to-transparent blur-[130px]" />
-        <div className="absolute top-[-10%] right-[-20%] w-[100vw] h-[100vh] bg-gradient-to-b from-amber-700/10 via-[#b08d5f]/5 to-transparent rotate-[-35deg] blur-[80px] transform origin-top-right" />
-        <div className="absolute top-[20%] left-[-10%] w-[80vw] h-[60vh] bg-gradient-to-t from-transparent via-slate-700/5 to-transparent rotate-[-20deg] blur-[100px]" />
+        {/* The painting */}
+        <div
+          className="absolute inset-0 w-full h-[150vh] bg-cover bg-top"
+          style={{
+            backgroundImage: "url('/background.avif')",
+            transform: `translateY(-${parallaxY}px)`,
+            opacity: bgOpacity,
+            willChange: 'transform, opacity',
+          }}
+        />
+        {/* Gradient overlay: painting dissolves into dark background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0c10]/60 to-[#0a0c10]" />
+        {/* Side vignette for cinematic feel */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0c10]/70 via-transparent to-[#0a0c10]/70" />
+        {/* Noise texture overlay */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyMDAnIGhlaWdodD0nMjAwJz48ZmlsdGVyIGlkPSdub2lzZSc+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bW9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjA1Ii8+PC9zdmc+')] opacity-20 mix-blend-overlay"></div>
       </div>
 
@@ -246,6 +275,42 @@ const Home = () => {
                 </div>
             </div>
           </Link>
+
+          {/* ML Club */}
+          <Link to="/ml-club" className="group relative h-[19rem] bg-gradient-to-br from-[#12141a]/60 to-[#0a0c10]/60 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:border-violet-500/40 hover:shadow-[0_0_60px_-15px_rgba(139,92,246,0.25)] flex flex-col justify-between">
+            <div className="absolute inset-0 bg-[url('/backml.avif')] bg-cover bg-center opacity-15 group-hover:opacity-25 transition-opacity duration-700" />
+            <div className="relative z-10 flex flex-col justify-between h-full">
+              <div>
+                <div className="w-14 h-14 mb-4 text-violet-300/80 group-hover:text-violet-200 transition-colors drop-shadow-[0_0_10px_rgba(139,92,246,0.3)]">
+                  <Brain strokeWidth={1.2} size={56} />
+                </div>
+                <h3 className="text-3xl font-bold text-white/90 mb-2 tracking-wide">{t.home.mlclubTitle}</h3>
+                <p className="text-lg text-white/60 font-light">{t.home.mlclubDesc}</p>
+              </div>
+              <div className="flex items-center gap-2 text-sm font-bold text-violet-400/90 group-hover:text-violet-200 transition-colors">
+                <span className="border-b-2 border-violet-500/30 pb-1 group-hover:border-violet-300">KZN</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </Link>
+
+          {/* Education */}
+          <Link to="/education" className="group relative h-[19rem] bg-gradient-to-br from-[#12141a]/60 to-[#0a0c10]/60 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:border-amber-500/40 hover:shadow-[0_0_60px_-15px_rgba(217,119,6,0.25)] flex flex-col justify-between">
+            <div className="relative z-10 flex flex-col justify-between h-full">
+              <div>
+                <div className="w-14 h-14 mb-4 text-amber-200/80 group-hover:text-amber-100 transition-colors drop-shadow-[0_0_10px_rgba(251,191,36,0.3)]">
+                  <BookOpen strokeWidth={1.2} size={56} />
+                </div>
+                <h3 className="text-3xl font-bold text-white/90 mb-2 tracking-wide">{t.home.educationTitle}</h3>
+                <p className="text-lg text-white/60 font-light">{t.home.educationDesc}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 font-bold text-xs uppercase tracking-wider">
+                  {t.home.educationBadge}
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
@@ -320,6 +385,18 @@ const App: React.FC = () => {
 
         <Route path="/team/timur" element={<TimurProfile onBack={() => navigate('/team')} />} />
         <Route path="/team/arjun" element={<ArjunProfile onBack={() => navigate('/team')} />} />
+
+        <Route path="/ml-club" element={
+             <div className="min-h-screen bg-black font-sans">
+                <MLClubPage onBack={() => navigate('/')} />
+             </div>
+        } />
+
+        <Route path="/education" element={
+             <div className="min-h-screen bg-black font-sans">
+                <EducationPage />
+             </div>
+        } />
 
         {/* 404 Redirect */}
         <Route path="*" element={<NotFound />} />
