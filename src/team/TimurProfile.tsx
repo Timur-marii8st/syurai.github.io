@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowLeft, Brain, Cpu, Globe, Github, Mail, Sparkles, Award } from 'lucide-react';
+import { ArrowLeft, Brain, Cpu, Globe, Github, Mail, Sparkles, Award, FileText } from 'lucide-react';
 import timurPhoto from '../assets/timur-s.webp';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -31,7 +31,7 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
                 <img 
                     src={timurPhoto} 
                     alt="Timur Sabitov" 
-                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover transition-all duration-700"
                 />
             </div>
             {/* Декоративный элемент "Founder" */}
@@ -58,6 +58,9 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
                 <a href="https://github.com/Timur-marii8st" target="_blank" className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 hover:border-amber-500/50 hover:text-white transition-colors">
                     <Github size={14} /> GitHub
                 </a>
+                <a href="https://drive.google.com/file/d/1eyXqbGstkaMxQT4B3WtU0BuUfMVTxJOL/view?usp=sharing" target="_blank" className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5 hover:border-amber-500/50 hover:text-white transition-colors">
+                    <FileText size={14} /> Resume
+                </a>
             </div>
           </div>
         </div>
@@ -70,10 +73,10 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
                     Vision & Architecture
                 </h2>
                 <p>
-                    I am an ML Engineer focused on the edge of what's possible in <strong>Artificial General Intelligence (AGI)</strong> precursors. My work bridges the gap between raw Large Language Model capabilities and autonomous, agentic behavior.
+                    ML Engineer and independent AI researcher with end-to-end experience shipping ML systems to production. Specializing in <strong>LLMs, NLP, multi-agent systems, and mechanistic interpretability</strong>. Author of a research paper on implicit psychological models in LLMs using Sparse Autoencoders (arXiv, pending). Open-source contributor to <strong>Sakana AI (ShinkaEvolve)</strong>.
                 </p>
                 <p>
-                    Currently leading R&D at <span className="text-white font-bold">Syurai.ai</span>, pioneering <strong>hierarchical memory systems</strong> that allow AI agents to maintain long-term context and psychological coherence. I don't just train models; I build cognitive architectures that <em>think</em>, <em>remember</em>, and <em>act</em>.
+                    Founder of <span className="text-white font-bold">Syurai Lab</span> — an independent AI research lab focused on agentic AI and interpretability. Currently working as AI Architect / ML Engineer at <strong>IT Park Tatarstan</strong>, designing end-to-end procurement automation systems with integrated LLM pipelines. Previously architected async inference services and full-stack ML pipelines at AI Manager startup, achieving <strong>5-10x ETL speedup</strong> with Polars.
                 </p>
                 <div className="bg-amber-900/10 border-l-4 border-amber-500 p-4 rounded-r-lg mt-4">
                     <p className="italic text-amber-100/80 text-sm">
@@ -84,11 +87,11 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
             
             <div className="md:col-span-1 space-y-4">
                 <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Core Competencies</h3>
-                <SkillBar skill="LLM Architectures & RAG" level={98} />
-                <SkillBar skill="Rust / High-Load Compute" level={90} />
-                <SkillBar skill="NLP" level={95} />
-                <SkillBar skill="Autonomous Agents" level={92} />
-                <SkillBar skill="Polars / Big Data" level={99} />
+                <SkillBar skill="LLM / NLP / RAG" level={98} />
+                <SkillBar skill="Multi-Agent Systems" level={95} />
+                <SkillBar skill="Mechanistic Interpretability" level={92} />
+                <SkillBar skill="PyTorch / ML Pipelines" level={96} />
+                <SkillBar skill="Polars / Data Engineering" level={99} />
             </div>
         </div>
 
@@ -104,15 +107,15 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
                 
                 <ul className="space-y-6">
                     <li>
-                        <div className="text-white font-bold text-lg mb-1 group-hover:text-amber-300 transition-colors">Zero-Shot Psychometrics in LLMs</div>
+                        <div className="text-white font-bold text-lg mb-1 group-hover:text-amber-300 transition-colors">Do Language Models Build Implicit Psychological Models of Speakers?</div>
                         <p className="text-sm text-gray-400">
-                            Pioneering research proving the Linear Representation Hypothesis in Latent Spaces. Demonstrated 98% accuracy in extracting introversion/extraversion traits without fine-tuning.
+                            Evidence from Sparse Autoencoder Latents — arXiv (pending endorsement). Investigated whether LLMs (Gemma 3 4B) encode implicit psychological speaker models detectable via Sparse Autoencoders, contributing to mechanistic interpretability research.
                         </p>
                     </li>
                     <li>
                         <div className="text-white font-bold text-lg mb-1 group-hover:text-amber-300 transition-colors">Hierarchical Memory for Agents</div>
                         <p className="text-sm text-gray-400">
-                            Developing a novel architecture mimicking human hippocampal indexing to solve the context window limit for lifelong learning agents.
+                            Ongoing R&D: hierarchical optimized memory for AI agents and mechanistic interpretability of LLMs.
                         </p>
                     </li>
                 </ul>
@@ -128,15 +131,15 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
                 
                 <ul className="space-y-6">
                     <li>
-                        <div className="text-white font-bold text-lg mb-1 group-hover:text-blue-300 transition-colors">Wikki Agent (Edge AI)</div>
+                        <div className="text-white font-bold text-lg mb-1 group-hover:text-blue-300 transition-colors">SwarmForge — AI-Native IT Platform</div>
                         <p className="text-sm text-gray-400">
-                            Engineered a local-first AI assistant using <strong>Rust & Tauri</strong>. Achieved inference on consumer hardware by optimizing memory allocation, effectively democratizing secure AI.
+                            Hierarchical multi-agent architecture: <strong>Opus → Sonnet → Haiku</strong> orchestrating a fully digital IT company with AI agents as employees. Built with FastAPI, Celery, Redis, PostgreSQL, Next.js.
                         </p>
                     </li>
                     <li>
-                        <div className="text-white font-bold text-lg mb-1 group-hover:text-blue-300 transition-colors">Retail Core ML System</div>
+                        <div className="text-white font-bold text-lg mb-1 group-hover:text-blue-300 transition-colors">Wikki Agent (Edge AI)</div>
                         <p className="text-sm text-gray-400">
-                            Architected an End-to-End forecasting system using <strong>Polars</strong> (10x speedup over Pandas) and PyTorch. Deployed async FastAPI microservices handling real-time inference for business recommendations.
+                            Local AI agent with RAG for private documents. <strong>Rust/Tauri</strong> for minimal-RAM edge inference. Function Calling + MCP server for tool-augmented generation without fine-tuning.
                         </p>
                     </li>
                 </ul>
@@ -147,9 +150,9 @@ const TimurProfile = ({ onBack }: { onBack: () => void }) => {
         <div className="border border-white/10 rounded-2xl p-6 flex items-center gap-6 bg-[#050505]">
             <Award className="text-yellow-500 shrink-0" size={40} />
             <div>
-                <h4 className="text-white font-bold text-lg">Kaggle Competitor & Hackathon Winner</h4>
+                <h4 className="text-white font-bold text-lg">Open Source & Community</h4>
                 <p className="text-gray-500 text-sm">
-                    Consistently ranking in top percentiles. Developer of "CTG Analyzer" achieving 0.9796 PR-AUC in medical diagnostics.
+                    Core contributor to Sakana AI (ShinkaEvolve). Founder of ML Club at School 21 (Sber). CTG Analyzer achieving 0.9796 PR-AUC in medical diagnostics.
                 </p>
             </div>
         </div>
