@@ -128,7 +128,7 @@ const MLClubPage: React.FC<MLClubPageProps> = ({ onBack }) => {
                 <h3 className="text-xl font-bold text-white/90 mb-2">{t.mlclub.joinChat}</h3>
                 <p className="text-white/60 font-light leading-relaxed mb-4">{t.mlclub.joinChatDesc}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
-                  t.me/kznmlchat <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  t.me/kznmlchat
                 </span>
               </a>
 
