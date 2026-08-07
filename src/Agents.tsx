@@ -10,6 +10,13 @@ interface AgentsPageProps {
   onNavigateToSabyAgent: () => void;
 }
 
+const cardKeyDown = (action: () => void) => (event: React.KeyboardEvent) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    action();
+  }
+};
+
 const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateToSabyAgent }) => {
   const { t } = useLanguage();
   return (
@@ -34,9 +41,13 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[400px]">
           
           {/* Motivi Card - Spans 2 cols on desktop for emphasis */}
-          <div 
+          <div
             onClick={onNavigateToMotivi}
-            className="group relative col-span-1 md:col-span-2 row-span-1 md:row-span-2 rounded-3xl overflow-hidden cursor-pointer bg-neutral-900 border border-white/10"
+            onKeyDown={cardKeyDown(onNavigateToMotivi)}
+            role="button"
+            tabIndex={0}
+            aria-label={t.agents.exploreProject}
+            className="group relative col-span-1 md:col-span-2 row-span-1 md:row-span-2 rounded-3xl overflow-hidden cursor-pointer bg-neutral-900 border border-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-500"
           >
             {/* Background Image Placeholder - Warm Tones */}
             <div className="absolute inset-0 bg-gray-800">
@@ -75,7 +86,11 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
           {/* Saby-Agent Card */}
           <div
             onClick={onNavigateToSabyAgent}
-            className="group col-span-1 relative rounded-3xl overflow-hidden cursor-pointer bg-neutral-900 border border-white/10 hover:border-blue-500/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(59,130,246,0.3)] flex flex-col justify-between p-8"
+            onKeyDown={cardKeyDown(onNavigateToSabyAgent)}
+            role="button"
+            tabIndex={0}
+            aria-label={t.agents.exploreProject}
+            className="group col-span-1 relative rounded-3xl overflow-hidden cursor-pointer bg-neutral-900 border border-white/10 hover:border-blue-500/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(59,130,246,0.3)] flex flex-col justify-between p-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"
           >
             {/* Ambient glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-950/40 via-transparent to-indigo-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

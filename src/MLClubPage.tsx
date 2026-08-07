@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useLanguage } from './contexts/LanguageContext';
 import { ArrowRight, MessageCircle, Calendar, Zap } from 'lucide-react';
+import { usePrefersReducedMotion } from './components/usePrefersReducedMotion';
 
 // Fade-in on scroll
 const FadeInSection: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className = '', delay = 0 }) => {
@@ -35,17 +36,23 @@ interface MLClubPageProps {
 const MLClubPage: React.FC<MLClubPageProps> = ({ onBack }) => {
   const { t } = useLanguage();
   const [scrollY, setScrollY] = useState(0);
+  const frameRef = useRef(0);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const handleScroll = useCallback(() => {
-    setScrollY(window.scrollY);
+    cancelAnimationFrame(frameRef.current);
+    frameRef.current = requestAnimationFrame(() => setScrollY(window.scrollY));
   }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(frameRef.current);
+    };
   }, [handleScroll]);
 
-  const parallaxY = scrollY * 0.4;
+  const parallaxY = prefersReducedMotion ? 0 : scrollY * 0.4;
   const bgOpacity = Math.max(0, 1 - scrollY / 700);
 
   return (
@@ -79,7 +86,7 @@ const MLClubPage: React.FC<MLClubPageProps> = ({ onBack }) => {
         {/* Hero */}
         <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
           {/* ML CLUB — massive title */}
-          <h1 className="relative font-black text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] tracking-tighter leading-[0.85] select-none mb-8">
+          <h1 className="relative font-black text-[clamp(3.25rem,13vw,16rem)] tracking-tighter leading-[0.85] select-none mb-8">
             <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-b from-violet-400/60 via-blue-300/30 to-transparent blur-[50px] transform scale-105 z-0" aria-hidden="true">
               ML CLUB
             </span>
@@ -150,6 +157,8 @@ const MLClubPage: React.FC<MLClubPageProps> = ({ onBack }) => {
                 <img
                   src="/hackaml.JPG"
                   alt="Hackathon"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[22rem] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -162,6 +171,8 @@ const MLClubPage: React.FC<MLClubPageProps> = ({ onBack }) => {
                 <img
                   src="/mlclub-people.jpg"
                   alt="ML Club Meetup"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[22rem] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

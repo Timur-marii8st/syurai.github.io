@@ -1,13 +1,23 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import { localizePath, stripLocale } from '../i18n/localeRouting';
+import type { Lang } from '../i18n/translations';
 
 const LanguageSwitcher: React.FC = () => {
   const { lang, setLang } = useLanguage();
+  const { pathname, search, hash } = useLocation();
+  const navigate = useNavigate();
+
+  const switchLanguage = (nextLang: Lang) => {
+    setLang(nextLang);
+    navigate(`${localizePath(stripLocale(pathname), nextLang)}${search}${hash}`);
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center bg-black/60 backdrop-blur-md border border-white/10 rounded-full p-1 shadow-lg hover:border-white/25 transition-colors">
       <button
-        onClick={() => setLang('en')}
+        onClick={() => switchLanguage('en')}
         className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-200 ${
           lang === 'en'
             ? 'bg-white text-black shadow-sm'
@@ -18,7 +28,7 @@ const LanguageSwitcher: React.FC = () => {
         EN
       </button>
       <button
-        onClick={() => setLang('ru')}
+        onClick={() => switchLanguage('ru')}
         className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-200 ${
           lang === 'ru'
             ? 'bg-white text-black shadow-sm'

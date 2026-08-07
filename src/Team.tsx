@@ -1,12 +1,20 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, UserPlus, Fingerprint, Code2 } from 'lucide-react';
 import timurPhoto from './assets/timur-s.webp';
+import arjunAvatar from './assets/arjun-avatar.svg';
 import { useLanguage } from './contexts/LanguageContext';
 
 interface TeamPageProps {
   onNavigateToTimur: () => void;
   onNavigateToArjun: () => void;
 }
+
+const cardKeyDown = (action: () => void) => (event: React.KeyboardEvent) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    action();
+  }
+};
 
 const TeamPage: React.FC<TeamPageProps> = ({ onNavigateToTimur, onNavigateToArjun }) => {
   useEffect(() => {
@@ -33,7 +41,11 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigateToTimur, onNavigateToArju
           {/* 1. Timur Card (Main Founder) - Spans 2 cols */}
           <div
             onClick={onNavigateToTimur}
-            className="group relative col-span-1 md:col-span-2 row-span-1 rounded-3xl overflow-hidden cursor-pointer bg-[#0e0e0e] border border-white/10 hover:border-amber-500/50 transition-all duration-500"
+            onKeyDown={cardKeyDown(onNavigateToTimur)}
+            role="button"
+            tabIndex={0}
+            aria-label={t.team.viewProfile}
+            className="group relative col-span-1 md:col-span-2 row-span-1 rounded-3xl overflow-hidden cursor-pointer bg-[#0e0e0e] border border-white/10 hover:border-amber-500/50 transition-all duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-500"
           >
              {/* Background Image/Overlay */}
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-90" />
@@ -67,13 +79,17 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigateToTimur, onNavigateToArju
           {/* 2. Arjun Card (Lead Engineer) - 1 Col */}
           <div
             onClick={onNavigateToArjun}
-            className="group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-pointer bg-[#0e0e0e] border border-white/10 hover:border-blue-500/50 transition-all duration-500"
+            onKeyDown={cardKeyDown(onNavigateToArjun)}
+            role="button"
+            tabIndex={0}
+            aria-label={t.team.viewProfile}
+            className="group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-pointer bg-[#0e0e0e] border border-white/10 hover:border-blue-500/50 transition-all duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"
           >
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-80" />
 
              <div className="absolute inset-0 flex justify-center items-start pt-4">
                 <img
-                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=c0aede&skinColor=brown"
+                    src={arjunAvatar}
                     alt="Arjun Patel"
                     className="h-[120%] w-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
                 />
@@ -92,9 +108,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigateToTimur, onNavigateToArju
              </div>
           </div>
            <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScQPwfyjVZwOOMhb9_oZuNXdgihatNQmLAUfnrt3_ZWIFog0Q/viewform?usp=headerd"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:4gg528@gmail.com?subject=Joining%20the%20Syurai%20team"
             className="group relative col-span-1 md:col-span-3 lg:col-span-1 bg-[#050505] border border-dashed border-white/10 hover:border-white/30 rounded-3xl p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:bg-white/[0.02] cursor-pointer"
           >
              <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500">

@@ -404,7 +404,7 @@ const SabyAgentPage = ({ onBack }: { onBack: () => void }) => {
               {t.saby.ctaDesc}
             </p>
             <a
-              href="mailto:contact@syurai.ai"
+              href="mailto:4gg528@gmail.com?subject=Saby-Agent%20deployment"
               className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-blue-100 transition-colors"
             >
               <Mail size={18} /> {t.saby.ctaButton}

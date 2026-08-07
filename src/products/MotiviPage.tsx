@@ -36,7 +36,7 @@ const FadeInSection = ({ children, delay = 0 }: { children: React.ReactNode, del
 };
 
 // --- Sub-components ---
-const FeatureCard = ({ icon, title, desc }: { icon: any, title: string, desc: string }) => (
+const FeatureCard = ({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) => (
   <div className="bg-gradient-to-br from-white/5 to-transparent border border-amber-500/10 hover:border-amber-500/30 p-6 rounded-2xl transition-all hover:bg-white/10 group">
     <div className="text-amber-500 mb-4 group-hover:scale-110 transition-transform duration-300">
       {icon}

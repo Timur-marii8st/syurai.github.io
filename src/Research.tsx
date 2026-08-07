@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { ArrowLeft, Calendar, User, Download, ChevronRight } from 'lucide-react';
+import { useParams } from 'react-router-dom';
 import { useLanguage } from './contexts/LanguageContext';
 import PsychProfilingPaper from './articles/PsychProfilingPaper';
 import PsychoScopePaper from './articles/PsychoScopePaper';
+import LocalizedLink from './components/LocalizedLink';
 
 interface PaperMetadata {
   id: string;
@@ -32,35 +34,37 @@ const papers: PaperMetadata[] = [
     date: 'Dec 14, 2025',
     abstract:
       'Investigating the capability of Large Language Models to infer MBTI types and Big Five traits based solely on text analysis in a zero-shot setting. Comparisons between Qwen, DeepSeek V3.2 and Gemini 3.0 Pro.',
-    tags: ['Preprint', 'Psychometrics', 'LLM Analysis'],
-    pdfUrl: 'https://drive.google.com/file/d/1m3oH60JBD1fJl4Tnapcf92625YBOFykW/view'
+    tags: ['Preprint', 'Psychometrics', 'LLM Analysis']
   }
 ];
 
-const ResearchPage = () => {
+export const ResearchArticlePage = () => {
   const { t } = useLanguage();
-  const [activePaperId, setActivePaperId] = useState<string | null>(null);
+  const { paperId } = useParams();
+  const paper = papers.find((p) => p.id === paperId);
 
   useEffect(() => {
-    if (activePaperId) {
-      window.scrollTo(0, 0);
-    }
-  }, [activePaperId]);
+    window.scrollTo(0, 0);
+  }, [paperId]);
 
-  if (activePaperId) {
-    const paper = papers.find((p) => p.id === activePaperId);
-    if (!paper) return null;
-
+  if (!paper) {
     return (
-      <div className="min-h-screen bg-black text-gray-300 pt-24 pb-20 px-4 animate-in fade-in duration-500">
-        <div className="max-w-4xl mx-auto">
-          <button
-            onClick={() => setActivePaperId(null)}
+      <div className="min-h-screen bg-black text-white p-10">
+        {t.global.notFound} <LocalizedLink to="/research" className="underline text-amber-500">{t.global.backToResearch}</LocalizedLink>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-black text-gray-300 pt-24 pb-20 px-4 animate-in fade-in duration-500">
+      <div className="max-w-4xl mx-auto">
+          <LocalizedLink
+            to="/research"
             className="group flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors mb-8"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             {t.research.backToResearch}
-          </button>
+          </LocalizedLink>
 
           <div className="border-b border-white/10 pb-8 mb-8">
             <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">{paper.title}</h1>
@@ -84,13 +88,13 @@ const ResearchPage = () => {
             </div>
           </div>
 
-          {activePaperId === 'psych-llm-2025' && <PsychProfilingPaper />}
-          {activePaperId === 'psych-scope-2026' && <PsychoScopePaper />}
+          {paper.id === 'psych-llm-2025' && <PsychProfilingPaper />}
+          {paper.id === 'psych-scope-2026' && <PsychoScopePaper />}
 
           <div className="mt-16 pt-8 border-t border-white/10 flex justify-between items-center">
-            <button onClick={() => setActivePaperId(null)} className="text-gray-500 hover:text-white transition-colors">
+            <LocalizedLink to="/research" className="text-gray-500 hover:text-white transition-colors">
               {t.global.backToList}
-            </button>
+            </LocalizedLink>
             {paper.pdfUrl && (
               <a
                 href={paper.pdfUrl}
@@ -103,16 +107,19 @@ const ResearchPage = () => {
               </a>
             )}
           </div>
-        </div>
       </div>
-    );
-  }
+    </div>
+  );
+};
+
+const ResearchPage = () => {
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-20 px-4 sm:px-6 animate-in fade-in duration-500">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">{t.research.title}</h2>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">{t.research.title}</h1>
           <p className="text-xl text-gray-400 max-w-2xl font-light">
             {t.research.subtitle}
           </p>
@@ -120,9 +127,9 @@ const ResearchPage = () => {
 
         <div className="grid grid-cols-1 gap-6">
           {papers.map((paper) => (
-            <div
+            <LocalizedLink
               key={paper.id}
-              onClick={() => setActivePaperId(paper.id)}
+              to={`/research/${paper.id}`}
               className="group cursor-pointer bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
@@ -150,7 +157,7 @@ const ResearchPage = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </LocalizedLink>
           ))}
         </div>
       </div>
