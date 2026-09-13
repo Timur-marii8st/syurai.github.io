@@ -8,7 +8,7 @@ This repository is a Vite + React + TypeScript frontend for the Syurai site.
 - `src/components/` contains shared UI pieces (for example, `LanguageSwitcher`).
 - `src/contexts/` and `src/i18n/` hold app-wide state and localization resources.
 - `src/assets/` and `public/` store static assets (images, SVGs, redirects).
-- `.github/workflows/deploy.yml` defines CI/CD deployment to GitHub Pages on pushes to `master`.
+- Production deploys from `dist` to the Cloudflare Pages project `syurai` via Wrangler.
 
 Prefer colocating related assets and component files inside the same feature folder when adding new pages.
 
