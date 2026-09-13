@@ -7,7 +7,7 @@ import heroBg from './assets/motivi_logo.webp';
 
 interface AgentsPageProps {
   onNavigateToMotivi: () => void;
-  onNavigateToSabyAgent: () => void;
+  onNavigateToVibeDoku: () => void;
 }
 
 const cardKeyDown = (action: () => void) => (event: React.KeyboardEvent) => {
@@ -17,7 +17,7 @@ const cardKeyDown = (action: () => void) => (event: React.KeyboardEvent) => {
   }
 };
 
-const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateToSabyAgent }) => {
+const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateToVibeDoku }) => {
   const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-20 px-4 sm:px-6 animate-in fade-in duration-700">
@@ -83,10 +83,10 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
             </div>
           </div>
 
-          {/* Saby-Agent Card */}
+          {/* Vibe-Doku Card */}
           <div
-            onClick={onNavigateToSabyAgent}
-            onKeyDown={cardKeyDown(onNavigateToSabyAgent)}
+            onClick={onNavigateToVibeDoku}
+            onKeyDown={cardKeyDown(onNavigateToVibeDoku)}
             role="button"
             tabIndex={0}
             aria-label={t.agents.exploreProject}
@@ -126,9 +126,9 @@ const AgentsPage: React.FC<AgentsPageProps> = ({ onNavigateToMotivi, onNavigateT
 
             {/* Bottom content */}
             <div className="relative z-10">
-              <h3 className="text-3xl font-bold text-white mb-2 leading-tight">Saby-Agent</h3>
+              <h3 className="text-3xl font-bold text-white mb-2 leading-tight">Vibe-Doku</h3>
               <p className="text-gray-400 text-sm mb-5 line-clamp-2 group-hover:line-clamp-none transition-all">
-                {t.agents.sabyDesc}
+                {t.agents.vibeDokuDesc}
               </p>
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center gap-2 text-sm font-bold text-blue-400">
                 {t.agents.exploreProject} <ArrowRight size={15} />

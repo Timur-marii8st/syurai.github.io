@@ -39,9 +39,9 @@ const makeArticleJsonLd = ({ path, headline, description, datePublished, author 
 export const seoRoutes = [
   {
     path: '/',
-    title: 'Syurai.ai | AI Agents, Research, and Agentic Development',
+    title: 'Syurai.ai | AI Agents, Research, and Compute Systems',
     description:
-      'Syurai builds AI agents for business workflows, agentic development consulting, and applied AI research in cognitive architectures.',
+      'Syurai builds AI agents, contract automation and tested compute systems for business AI workloads.',
     jsonLd: organizationJsonLd,
   },
   {
@@ -62,6 +62,16 @@ export const seoRoutes = [
     jsonLd: makeBreadcrumbJsonLd([
       { name: 'Home', path: '/' },
       { name: 'Agentic Development Consulting', path: '/consulting' },
+    ]),
+  },
+  {
+    path: '/compute',
+    title: 'Syurai Compute | AI Workstations and GPU Servers',
+    description:
+      'AI workstations, compact systems, and GPU servers selected, benchmarked, supplied, and deployed for a specific business workload.',
+    jsonLd: makeBreadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Syurai Compute', path: '/compute' },
     ]),
   },
   {
@@ -118,10 +128,10 @@ export const seoRoutes = [
       'Motivi is a proactive Telegram planning assistant with cognitive memory, calendar integration, habits, and long-term goal tracking.',
   },
   {
-    path: '/saby-agent',
-    title: 'Saby Agent for Contract Automation | Syurai.ai',
+    path: '/vibe-doku',
+    title: 'Vibe-Doku | Contract Operations System by Syurai',
     description:
-      'A local multi-agent system that automates contract drafting, legal checks, and execution control inside Saby EDO workflows.',
+      'Contract operations for procurement, legal review, document generation, and execution control with Saby integration and local AI support.',
   },
   {
     path: '/stack',
@@ -173,9 +183,9 @@ export const seoRoutes = [
 export const localizedSeoText = {
   ru: {
     '/': {
-      title: 'Syurai.ai | ИИ-агенты, исследования и агентная разработка',
+      title: 'Syurai.ai | ИИ-агенты, исследования и AI-инфраструктура',
       description:
-        'Syurai создает ИИ-агентов для бизнес-процессов, консультирует команды по агентной разработке и ведет прикладные исследования AI.',
+        'Syurai создаёт ИИ-агентов, автоматизирует договорную работу и подбирает вычислительные системы под бизнес-задачи AI.',
     },
     '/services': {
       title: 'ИИ-агенты для автоматизации CRM | Syurai.ai',
@@ -186,6 +196,11 @@ export const localizedSeoText = {
       title: 'Консалтинг по агентной разработке | Syurai.ai',
       description:
         'Помогаем инженерным командам внедрять Claude Code, Codex, Cursor и практичные процессы разработки с AI-агентами.',
+    },
+    '/compute': {
+      title: 'Syurai Compute | Рабочие станции и GPU-серверы для ИИ',
+      description:
+        'Подбор, тестирование, поставка и внедрение рабочих станций, компактных AI-систем и GPU-серверов под конкретную нагрузку.',
     },
     '/research': {
       title: 'AI-исследования и публикации | Syurai.ai',
@@ -212,10 +227,10 @@ export const localizedSeoText = {
       description:
         'Motivi - проактивный Telegram-ассистент планирования с когнитивной памятью, календарем, привычками и долгосрочными целями.',
     },
-    '/saby-agent': {
-      title: 'Saby Agent для автоматизации договоров | Syurai.ai',
+    '/vibe-doku': {
+      title: 'Vibe-Doku | Система договорной работы от Syurai',
       description:
-        'Локальная мультиагентная система для подготовки договоров, юридических проверок и контроля исполнения в Saby EDO.',
+        'Закупки, юридическая проверка, подготовка документов и контроль исполнения с интеграцией Saby и поддержкой локального ИИ.',
     },
     '/stack': {
       title: 'Технологический стек AI-разработки | Syurai.ai',
@@ -269,9 +284,11 @@ export const fallbackContent = {
         eyebrow: 'AI agents and applied research',
         heading: 'Syurai.ai',
         body:
-          'Syurai builds AI agents for CRM automation, agentic development workflows, and applied AI research in cognitive architectures.',
+          'Syurai builds AI agents, contract operations software, and compute systems tested for real business workloads.',
         links: [
           { path: '/services', label: 'AI agents for CRM automation' },
+          { path: '/compute', label: 'Syurai Compute systems' },
+          { path: '/vibe-doku', label: 'Vibe-Doku contract operations' },
           { path: '/consulting', label: 'Agentic development consulting' },
           { path: '/research', label: 'AI research publications' },
           { path: '/agents', label: 'Autonomous AI agents' },
@@ -284,7 +301,7 @@ export const fallbackContent = {
           'We build AI agents that connect to Bitrix24, amoCRM, Salesforce, or custom CRM APIs to automate lead qualification, follow-ups, task creation, status updates, and reporting.',
         links: [
           { path: '/consulting', label: 'Consulting for agentic teams' },
-          { path: '/saby-agent', label: 'Contract automation with Saby Agent' },
+          { path: '/vibe-doku', label: 'Contract operations with Vibe-Doku' },
           { path: '/agents', label: 'Explore AI agents' },
         ],
       },
@@ -297,6 +314,17 @@ export const fallbackContent = {
           { path: '/services', label: 'Business AI agents' },
           { path: '/stack', label: 'Engineering stack' },
           { path: '/team', label: 'Meet the team' },
+        ],
+      },
+      '/compute': {
+        eyebrow: 'Syurai Compute',
+        heading: 'Compute systems for AI workloads',
+        body:
+          'We select, benchmark, supply, and deploy AI workstations, compact systems, and GPU servers against an agreed workload and acceptance test.',
+        links: [
+          { path: '/services', label: 'Business AI agents' },
+          { path: '/vibe-doku', label: 'Vibe-Doku contract operations' },
+          { path: '/stack', label: 'Engineering stack' },
         ],
       },
       '/research': {
@@ -336,7 +364,7 @@ export const fallbackContent = {
           'Syurai develops autonomous AI systems for personal productivity, enterprise workflows, contract automation, planning, and applied research workflows.',
         links: [
           { path: '/motivi', label: 'Motivi planning assistant' },
-          { path: '/saby-agent', label: 'Saby Agent for contracts' },
+          { path: '/vibe-doku', label: 'Vibe-Doku for contracts' },
           { path: '/services', label: 'AI agents for business' },
         ],
       },
@@ -350,11 +378,11 @@ export const fallbackContent = {
           { path: '/stack', label: 'Technology stack' },
         ],
       },
-      '/saby-agent': {
+      '/vibe-doku': {
         eyebrow: 'Contract automation',
-        heading: 'Saby Agent for contract workflows',
+        heading: 'Vibe-Doku contract operations',
         body:
-          'Saby Agent is a local multi-agent system for contract drafting, legal checks, contractor verification, document generation, and execution control inside Saby EDO workflows.',
+          'Vibe-Doku coordinates procurement, legal review, document generation, and execution control with Saby integration, local AI support, and evidence-first checks.',
         links: [
           { path: '/agents', label: 'Back to agents' },
           { path: '/services', label: 'Business AI automation' },
@@ -436,9 +464,11 @@ export const fallbackContent = {
         eyebrow: 'ИИ-агенты и прикладные исследования',
         heading: 'Syurai.ai',
         body:
-          'Syurai создает ИИ-агентов для автоматизации CRM, агентной разработки и прикладных AI-исследований в когнитивных архитектурах.',
+          'Syurai создаёт ИИ-агентов, систему договорной работы и вычислительную инфраструктуру, проверенную на реальных бизнес-задачах.',
         links: [
           { path: '/services', label: 'ИИ-агенты для CRM' },
+          { path: '/compute', label: 'Вычислительные системы Syurai Compute' },
+          { path: '/vibe-doku', label: 'Система договорной работы Vibe-Doku' },
           { path: '/consulting', label: 'Консалтинг по агентной разработке' },
           { path: '/research', label: 'AI-исследования' },
           { path: '/agents', label: 'Автономные ИИ-агенты' },
@@ -451,7 +481,7 @@ export const fallbackContent = {
           'Мы строим ИИ-агентов, которые подключаются к Bitrix24, amoCRM, Salesforce или CRM с API и автоматизируют квалификацию лидов, follow-up, задачи, статусы и отчеты.',
         links: [
           { path: '/consulting', label: 'Консалтинг для агентных команд' },
-          { path: '/saby-agent', label: 'Автоматизация договоров Saby Agent' },
+          { path: '/vibe-doku', label: 'Договорная работа Vibe-Doku' },
           { path: '/agents', label: 'Посмотреть ИИ-агентов' },
         ],
       },
@@ -464,6 +494,17 @@ export const fallbackContent = {
           { path: '/services', label: 'ИИ-агенты для бизнеса' },
           { path: '/stack', label: 'Инженерный стек' },
           { path: '/team', label: 'Команда' },
+        ],
+      },
+      '/compute': {
+        eyebrow: 'Syurai Compute',
+        heading: 'Вычислительные системы под AI-задачи',
+        body:
+          'Подбираем, тестируем, поставляем и внедряем рабочие станции, компактные AI-системы и GPU-серверы по согласованной нагрузке и тесту приёмки.',
+        links: [
+          { path: '/services', label: 'ИИ-агенты для бизнеса' },
+          { path: '/vibe-doku', label: 'Система договорной работы Vibe-Doku' },
+          { path: '/stack', label: 'Инженерный стек' },
         ],
       },
       '/research': {
@@ -503,7 +544,7 @@ export const fallbackContent = {
           'Syurai разрабатывает автономные AI-системы для продуктивности, корпоративных процессов, автоматизации договоров, планирования и исследований.',
         links: [
           { path: '/motivi', label: 'Ассистент планирования Motivi' },
-          { path: '/saby-agent', label: 'Saby Agent для договоров' },
+          { path: '/vibe-doku', label: 'Vibe-Doku для договоров' },
           { path: '/services', label: 'ИИ-агенты для бизнеса' },
         ],
       },
@@ -517,11 +558,11 @@ export const fallbackContent = {
           { path: '/stack', label: 'Технологический стек' },
         ],
       },
-      '/saby-agent': {
+      '/vibe-doku': {
         eyebrow: 'Автоматизация договоров',
-        heading: 'Saby Agent для договорных процессов',
+        heading: 'Vibe-Doku для договорной работы',
         body:
-          'Saby Agent - локальная мультиагентная система для подготовки договоров, юридических проверок, проверки контрагентов, генерации документов и контроля исполнения в Saby EDO.',
+          'Vibe-Doku связывает закупки, юридическую проверку, подготовку документов и контроль исполнения с интеграцией Saby, локальным ИИ и проверяемыми источниками.',
         links: [
           { path: '/agents', label: 'Назад к агентам' },
           { path: '/services', label: 'Автоматизация бизнеса с AI' },

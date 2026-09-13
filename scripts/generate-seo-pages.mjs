@@ -11,6 +11,7 @@ import {
 } from '../src/seoData.js';
 
 const LANGS = ['en', 'ru'];
+const LEGACY_ALIASES = [{ from: '/saby-agent', to: '/vibe-doku' }];
 
 const escapeHtml = (value) =>
   value
@@ -162,6 +163,25 @@ ${assetTags}
   return writeHtmlFile(distDir, route.path, html);
 };
 
+const writeAliasRedirectHtml = (distDir, template, route, sourcePath, targetPath, lang) => {
+  const targetUrl = routeUrl(targetPath);
+  const assetTags = extractAssetTags(template);
+  const html = template
+    .replace(/<html[^>]*>/, `<html lang="${lang}">`)
+    .replace(
+      /<head>[\s\S]*?<\/head>/,
+      `<head>
+${renderHead(route, { lang, canonicalPath: targetPath, noindex: true })}
+    <meta http-equiv="refresh" content="0; url=${targetPath}" />
+    <script>window.location.replace(${JSON.stringify(targetPath)} + window.location.search + window.location.hash);</script>
+${assetTags}
+  </head>`
+    )
+    .replace('<div id="root"></div>', `<div id="root"><a href="${targetPath}">Continue to ${targetUrl}</a></div>`);
+
+  return writeHtmlFile(distDir, sourcePath, html);
+};
+
 const renderSitemap = () => {
   const now = new Date().toISOString().slice(0, 10);
   const entries = seoRoutes
@@ -202,7 +222,17 @@ const renderRedirects = () => {
     })
     .join('\n');
 
+  const aliasRedirects = LEGACY_ALIASES.flatMap((alias) => [
+    `${alias.from} ${localizePath(alias.to, 'en')} 301`,
+    `${alias.from}/ ${localizePath(alias.to, 'en')} 301`,
+    ...LANGS.flatMap((lang) => [
+      `${localizePath(alias.from, lang)} ${localizePath(alias.to, lang)} 301`,
+      `${localizePath(alias.from, lang)}/ ${localizePath(alias.to, lang)} 301`,
+    ]),
+  ]).join('\n');
+
   return `${legacyRedirects}
+${aliasRedirects}
 
 /* /404.html 404
 `;
@@ -224,6 +254,23 @@ const main = async () => {
     writeRouteHtml(distDir, template, homeRoute, { canonicalPath: localizePath(homeRoute.path, 'en') }),
     ...publicRoutes.filter((route) => route.path !== '/').map((route) => writeLegacyRedirectHtml(distDir, template, route)),
     ...publicRoutes.flatMap((route) => LANGS.map((lang) => writeLocalizedRouteHtml(distDir, template, route, lang))),
+    ...LEGACY_ALIASES.flatMap((alias) => {
+      const route = publicRoutes.find((candidate) => candidate.path === alias.to);
+      if (!route) throw new Error(`Legacy alias target is missing from SEO routes: ${alias.to}`);
+      return [
+        writeAliasRedirectHtml(distDir, template, route, alias.from, localizePath(alias.to, 'en'), 'en'),
+        ...LANGS.map((lang) =>
+          writeAliasRedirectHtml(
+            distDir,
+            template,
+            route,
+            localizePath(alias.from, lang),
+            localizePath(alias.to, lang),
+            lang
+          )
+        ),
+      ];
+    }),
   ]);
 
   const notFoundHtml = renderHtml(template, notFoundRoute, { noindex: true });
